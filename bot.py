@@ -1,13 +1,12 @@
-import time
+import asyncio
 import logging
 import os
-import asyncio
 import sys
-import schedule
+import time
 
-from aiogram import Bot, Dispatcher, html
-from aiogram.client.default import DefaultBotProperties
-from aiogram.enums import ParseMode
+from aiocron import crontab
+from aiogram import Bot
+from aiogram import Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 from dotenv import load_dotenv
@@ -15,7 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")
-
+bot = Bot(token=TOKEN)
 dp = Dispatcher()
 MSG = "Чи завантажував ти свій код  на гітхаб сьогодні, {}?"
 
@@ -34,17 +33,11 @@ async def remind_git(message: Message):
     await message.answer(MSG.format(user_name))
 
 
-async def send_reminder():
-    schedule.every().day.at("12:00").do(remind_git)
-    schedule.every().day.at("21:00").do(remind_git)
-    schedule.every().day.at("04:39").do(remind_git)
-
-
 async def main() -> None:
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     await dp.start_polling(bot)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
+
