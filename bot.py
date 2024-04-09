@@ -37,11 +37,25 @@ async def command_start_handler(message: Message):
 
 @dp.message()
 async def remind_git(message: Message):
+    """
+    The remind_git function is a coroutine that sends a message to the user
+        reminding them to commit their code.
+
+    :param message: Message: Get the message object
+    :return: A message with the user's name and a reminder to commit changes
+    :doc-author: Trelent
+    """
     user_name = message.from_user.first_name
     await message.answer(MSG.format(user_name))
 
 
 async def main() -> None:
+    """
+    The main function of the bot.
+
+    :return: None, so we need to explicitly tell the type checker that it's ok
+    :doc-author: Trelent
+    """
     await dp.start_polling(bot)
 
 
