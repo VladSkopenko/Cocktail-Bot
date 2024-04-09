@@ -4,7 +4,6 @@ import os
 import sys
 import time
 
-from aiocron import crontab
 from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram.filters import CommandStart
@@ -21,6 +20,15 @@ MSG = "Чи завантажував ти свій код  на гітхаб с�
 
 @dp.message(CommandStart())
 async def command_start_handler(message: Message):
+    """
+    The command_start_handler function is the handler for the /start command.
+    It sends a welcome message to the user who sent it.
+
+    :param message: Message: Get the message object, which contains all the information about that message
+    :return: The message &quot;hello, {user_fullname}&quot;
+    :doc-author: Trelent
+    """
+
     user_id = message.from_user.id
     user_fullname = message.from_user.full_name
     logging.info(f"{user_id=} {user_fullname=}, {time.asctime()}")
