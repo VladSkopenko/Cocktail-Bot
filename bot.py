@@ -3,6 +3,7 @@ import logging
 import os
 import asyncio
 import sys
+import schedule
 
 from aiogram import Bot, Dispatcher, html
 from aiogram.client.default import DefaultBotProperties
@@ -30,11 +31,13 @@ async def command_start_handler(message: Message):
 @dp.message()
 async def remind_git(message: Message):
     user_name = message.from_user.first_name
+    await message.answer(MSG.format(user_name))
 
-    for _ in range(20):
-        time.sleep(2)
 
-        await message.answer(MSG.format(user_name))
+async def send_reminder():
+    schedule.every().day.at("12:00").do(remind_git)
+    schedule.every().day.at("21:00").do(remind_git)
+    schedule.every().day.at("04:39").do(remind_git)
 
 
 async def main() -> None:
