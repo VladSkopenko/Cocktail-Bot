@@ -3,6 +3,7 @@ import time
 from aiogram import Router
 from aiogram import types
 from aiogram.filters import CommandStart
+from aiogram.filters import Command
 
 from loger import *
 
@@ -17,6 +18,6 @@ async def start_cmd(message: types.Message):
     await message.reply(f"Привіт ,{user_fullname}")
 
 
-@user_private_router.message()
-async def echo(message: types.Message):
-    await message.answer(message.text)
+@user_private_router.message(Command("menu"))
+async def menu_cmd(message: types.Message):
+    await message.answer("Вот меню:")

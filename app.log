@@ -107,3 +107,12 @@
 2024-04-14 01:15:08,800 - INFO - Update id=28632326 is handled. Duration 94 ms by bot id=7153324522
 2024-04-14 01:15:57,576 - INFO - Polling stopped
 2024-04-14 01:15:57,836 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 01:19:45,571 - DEBUG - Using proactor: IocpProactor
+2024-04-14 01:19:45,778 - INFO - Start polling
+2024-04-14 01:19:45,867 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 01:19:48,556 - INFO - Update id=28632327 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 01:19:53,410 - INFO - Update id=28632328 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 01:20:28,729 - INFO - Update id=28632329 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 01:20:29,371 - INFO - Update id=28632330 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 01:21:41,272 - INFO - Polling stopped
+2024-04-14 01:21:41,531 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'

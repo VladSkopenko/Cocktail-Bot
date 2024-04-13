@@ -4,7 +4,7 @@ import os
 from aiogram import Bot
 from aiogram import Dispatcher
 from dotenv import load_dotenv
-from src.user_private import user_private_router
+from src.handlers.user_private import user_private_router
 
 load_dotenv()
 
