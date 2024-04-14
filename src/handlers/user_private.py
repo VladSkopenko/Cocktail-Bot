@@ -5,8 +5,7 @@ from aiogram import types
 from aiogram import F
 from aiogram.filters import Command
 from aiogram.filters import CommandStart
-
-
+from src.common.patterns_for_command import DELIVERY
 user_private_router = Router()
 
 
@@ -21,6 +20,7 @@ async def menu_cmd(message: types.Message):
     await message.answer("Ось меню:")
 
 
+@user_private_router.message(F.text.lower().regexp(DELIVERY))
 @user_private_router.message(Command("shipping"))
 async def shipping_cmd(message: types.Message):
     await message.answer("Варіанти доставки:")
