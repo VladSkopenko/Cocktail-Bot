@@ -3,12 +3,14 @@ import os
 
 from aiogram import Bot
 from aiogram import Dispatcher
+from aiogram.types import BotCommandScopeAllPrivateChats
 from dotenv import load_dotenv
 from src.handlers.user_private import user_private_router
-
+from src.common.bot_command_list import private
+from src.common.alloweb_updates import ALLOWED_UPDATES
 load_dotenv()
 
-ALLOWED_UPDATES = ["message", "edited_message"]
+
 TOKEN = os.environ.get("TOKEN")
 
 bot = Bot(token=TOKEN)
@@ -19,6 +21,7 @@ dp.include_router(user_private_router)
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
+    await bot.set_my_commands(commands=private, scope=BotCommandScopeAllPrivateChats())
     await dp.start_polling(bot, allowed_updates=ALLOWED_UPDATES)
 
 

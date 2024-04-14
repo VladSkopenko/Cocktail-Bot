@@ -116,3 +116,24 @@
 2024-04-14 01:20:29,371 - INFO - Update id=28632330 is not handled. Duration 0 ms by bot id=7153324522
 2024-04-14 01:21:41,272 - INFO - Polling stopped
 2024-04-14 01:21:41,531 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 01:21:44,075 - DEBUG - Using proactor: IocpProactor
+2024-04-14 01:21:44,235 - INFO - Start polling
+2024-04-14 01:21:44,286 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 01:21:45,410 - INFO - Update id=28632332 is handled. Duration 328 ms by bot id=7153324522
+2024-04-14 01:22:30,132 - INFO - Polling stopped
+2024-04-14 01:22:30,390 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 14:59:28,218 - DEBUG - Using proactor: IocpProactor
+2024-04-14 14:59:28,475 - INFO - Start polling
+2024-04-14 14:59:28,529 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 14:59:31,460 - INFO - Update id=28632339 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 14:59:55,232 - INFO - Update id=28632340 is not handled. Duration 0 ms by bot id=7153324522
+2024-04-14 14:59:57,179 - INFO - Update id=28632341 is not handled. Duration 16 ms by bot id=7153324522
+2024-04-14 15:00:04,675 - INFO - Polling stopped
+2024-04-14 15:00:04,940 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 15:01:48,386 - DEBUG - Using proactor: IocpProactor
+2024-04-14 15:01:48,648 - INFO - Start polling
+2024-04-14 15:01:48,700 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-04-14 15:02:04,440 - INFO - Update id=28632342 is handled. Duration 344 ms by bot id=7153324522
+2024-04-14 15:02:06,009 - INFO - Update id=28632343 is handled. Duration 77 ms by bot id=7153324522
+2024-04-14 15:02:07,742 - INFO - Update id=28632344 is handled. Duration 79 ms by bot id=7153324522
+2024-04-14 15:02:09,192 - INFO - Update id=28632345 is handled. Duration 77 ms by bot id=7153324522

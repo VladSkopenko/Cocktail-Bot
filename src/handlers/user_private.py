@@ -20,4 +20,18 @@ async def start_cmd(message: types.Message):
 
 @user_private_router.message(Command("menu"))
 async def menu_cmd(message: types.Message):
-    await message.answer("Вот меню:")
+    await message.answer("Ось меню:")
+
+
+@user_private_router.message(Command("shipping"))
+async def shipping_cmd(message: types.Message):
+    await message.answer("Варіанти доставки:")
+
+
+@user_private_router.message(Command("about"))
+async def about_cmd(message: types.Message):
+    await message.answer("Хто я:")
+
+@user_private_router.message(Command("payment"))
+async def payment_cmd(message: types.Message):
+    await message.answer("Оплата картою")
