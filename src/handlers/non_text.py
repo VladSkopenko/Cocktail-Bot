@@ -1,10 +1,12 @@
 from random import choice
 
-from aiogram import Router
-import os
-from aiogram import types
 from aiogram import F
+from aiogram import Router
+from aiogram import types
+
 from src.common.sticks_id import STICKERS
+from src.utils.save_contact import save_contact
+
 non_text_router = Router()
 
 
@@ -25,7 +27,14 @@ async def location_cmd(message: types.Message):
 
 @non_text_router.message(F.contact)
 async def contact_cmd(message: types.Message):
-    await message.answer("Спасибі за контакт")
+    contact = message.contact
+    print(contact)
+    save_contact(contact.user_id,
+                 contact.first_name,
+                 contact.phone_number
+                 )
+
+    await message.answer("Дякую що поділились контактом ")
 
 
 @non_text_router.message(F.photo)
