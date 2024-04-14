@@ -37,21 +37,12 @@ async def contact_cmd(message: types.Message):
     await message.answer("Дякую що поділились контактом ")
 
 
-@non_text_router.message(F.photo)
-async def photo_cmd(message: types.Message):
-    await message.answer("Фото чудове, поділись ще одним будь ласка")
-
-
-@non_text_router.message(F.sticker)
-async def sticker_cmd(message: types.Message):
-    await message.answer("Стікер у відповідь")
-
 
 @non_text_router.message(F.voice)
 async def voice_cmd(message: types.Message):
-    await message.answer("Реакція на голосове повідомлення")
+    await message.answer("У вас дуже приємний голос")
 
 
 @non_text_router.message(F.video_note)
 async def video_cmd(message: types.Message):
-    await message.answer("Спасибі за контакт")
+    await message.answer("Вау, Ви режисер? ?")
