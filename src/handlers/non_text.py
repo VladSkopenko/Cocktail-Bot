@@ -1,7 +1,10 @@
+from random import choice
+
 from aiogram import Router
+import os
 from aiogram import types
 from aiogram import F
-
+from src.common.sticks_id import STICKERS
 non_text_router = Router()
 
 
@@ -12,9 +15,7 @@ async def photo_cmd(message: types.Message):
 
 @non_text_router.message(F.sticker)
 async def sticker_cmd(message: types.Message):
-    sticker_id = "CAACAgIAAxkBAAEL6YRmG87uK9d0Mg-dCHyEJ3SgqTMUrAACSxEAAtiYIUjmwxoCa8z3WjQE"
-    await message.answer_sticker(sticker=sticker_id)
-
+    await message.answer_sticker(sticker=choice(STICKERS))
 
 
 @non_text_router.message(F.location)
@@ -45,8 +46,3 @@ async def voice_cmd(message: types.Message):
 @non_text_router.message(F.video_note)
 async def video_cmd(message: types.Message):
     await message.answer("Спасибі за контакт")
-
-
-
-
-
