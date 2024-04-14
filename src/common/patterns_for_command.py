@@ -1,3 +1,3 @@
 import re
 
-DELIVERY = r"доставк[а-я]{1,3}"
+DELIVERY = r".*\bдоставк[а-я]{1,3}\b.*"

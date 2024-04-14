@@ -1,23 +1,24 @@
-import time
-
 from aiogram import Router
 from aiogram import types
 from aiogram import F
 from aiogram.filters import Command
 from aiogram.filters import CommandStart
+from aiogram.filters import or_f
+
 from src.common.patterns_for_command import DELIVERY
+
 user_private_router = Router()
 
 
 @user_private_router.message(CommandStart())
 async def start_cmd(message: types.Message):
     user_fullname = message.from_user.full_name
-    await message.reply(f"Привіт ,{user_fullname}")
+    await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник")
 
 
-@user_private_router.message(Command("menu"))
+@user_private_router.message(or_f(Command("menu"), (F.text.lower() == "меню")))
 async def menu_cmd(message: types.Message):
-    await message.answer("Ось меню:")
+    await message.answer("Вот меню:")
 
 
 @user_private_router.message(F.text.lower().regexp(DELIVERY))
