@@ -12,3 +12,4 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
 
 logging.getLogger().addHandler(file_handler)
+

@@ -2,19 +2,17 @@ import time
 
 from aiogram import Router
 from aiogram import types
-from aiogram.filters import CommandStart
+from aiogram import F
 from aiogram.filters import Command
+from aiogram.filters import CommandStart
 
-from loger import *
 
 user_private_router = Router()
 
 
 @user_private_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    user_id = message.from_user.id
     user_fullname = message.from_user.full_name
-    logging.info(f"{user_id=} {user_fullname=}, {time.asctime()}")
     await message.reply(f"Привіт ,{user_fullname}")
 
 
@@ -32,6 +30,12 @@ async def shipping_cmd(message: types.Message):
 async def about_cmd(message: types.Message):
     await message.answer("Хто я:")
 
+
 @user_private_router.message(Command("payment"))
 async def payment_cmd(message: types.Message):
-    await message.answer("Оплата картою")
+    await message.answer("Варіанти оплати")
+
+
+@user_private_router.message(F.text)
+async def payment_cmd(message: types.Message):
+    await message.answer("Magick")
