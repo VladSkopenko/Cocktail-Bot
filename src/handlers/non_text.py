@@ -28,7 +28,6 @@ async def location_cmd(message: types.Message):
 @non_text_router.message(F.contact)
 async def contact_cmd(message: types.Message):
     contact = message.contact
-    print(contact)
     save_contact(contact.user_id,
                  contact.first_name,
                  contact.phone_number
