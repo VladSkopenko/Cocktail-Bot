@@ -22,7 +22,7 @@ async def sticker_cmd(message: types.Message):
 
 @non_text_router.message(F.location)
 async def location_cmd(message: types.Message):
-    await message.answer("Реакція на повідомлення з локацією")
+    await message.answer("Неймовірно, це тайм-сквер?")
 
 
 @non_text_router.message(F.contact)
