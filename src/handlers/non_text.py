@@ -11,6 +11,7 @@ from src.utils.save_contact import save_contact
 non_text_router = Router()
 non_text_router.message.filter(ChatTypeFilter(["group", "private", "supergroup"]))
 
+
 @non_text_router.message(F.photo)
 async def photo_cmd(message: types.Message):
     await message.answer("Фото чудове, поділись ще одним будь ласка")

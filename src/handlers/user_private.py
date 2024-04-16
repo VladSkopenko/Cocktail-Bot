@@ -21,7 +21,8 @@ async def start_cmd(message: types.Message):
     await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник")
 
 
-@user_private_router.message(or_f(Command(MENU), (F.text.lower() == "меню")))
+@user_private_router.message(F.text.lower().regexp(MENU))
+@user_private_router.message(Command(MENU))
 async def menu_cmd(message: types.Message):
     await message.answer("Вот меню:")
 
@@ -42,7 +43,6 @@ async def about_cmd(message: types.Message):
 @user_private_router.message(Command("payment"))
 async def payment_cmd(message: types.Message):
     await message.answer("Варіанти оплати")
-
 
 # @user_private_router.message(F.text)
 # async def payment_cmd(message: types.Message):
