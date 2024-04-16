@@ -5,10 +5,11 @@ from aiogram import Router
 from aiogram import types
 
 from src.common.sticks_id import STICKERS
+from src.filters.chat_types import ChatTypeFilter
 from src.utils.save_contact import save_contact
 
 non_text_router = Router()
-
+non_text_router.message.filter(ChatTypeFilter(["group", "private", "supergroup"]))
 
 @non_text_router.message(F.photo)
 async def photo_cmd(message: types.Message):
@@ -34,7 +35,6 @@ async def contact_cmd(message: types.Message):
                  )
 
     await message.answer("Дякую що поділились контактом ")
-
 
 
 @non_text_router.message(F.voice)

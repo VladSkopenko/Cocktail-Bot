@@ -1,16 +1,18 @@
+from aiogram import F
 from aiogram import Router
 from aiogram import types
-from aiogram import F
 from aiogram.filters import Command
 from aiogram.filters import CommandStart
 from aiogram.filters import or_f
 
-from src.common.patterns_for_command import DELIVERY
-from src.common.patterns_for_command import PAYMENT
 from src.common.patterns_for_command import ABOUT
+from src.common.patterns_for_command import DELIVERY
 from src.common.patterns_for_command import MENU
+from src.common.patterns_for_command import PAYMENT
+from src.filters.chat_types import ChatTypeFilter
 
 user_private_router = Router()
+user_private_router.message.filter(ChatTypeFilter(["private"]))
 
 
 @user_private_router.message(or_f(CommandStart(), (F.text.lower() == "привіт")))

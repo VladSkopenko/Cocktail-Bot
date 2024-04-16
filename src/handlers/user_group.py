@@ -1,9 +1,12 @@
 from aiogram import Router
 from aiogram import types
-from src.utils.clean_text import clean_text
+
 from src.common.forbidden_words import forbidden_words
+from src.filters.chat_types import ChatTypeFilter
+from src.utils.clean_text import clean_text
 
 user_group_router = Router()
+user_group_router.message.filter(ChatTypeFilter(["group", "supergroup"]))
 
 
 @user_group_router.edited_message()
