@@ -4,7 +4,10 @@ from aiogram import types
 from aiogram.filters import Command
 from aiogram.filters import CommandStart
 from aiogram.filters import or_f
-from aiogram.utils.formatting import Bold, as_list, as_marked_section
+from aiogram.utils.formatting import as_list
+from aiogram.utils.formatting import as_marked_section
+from aiogram.utils.formatting import Bold
+
 from src.common.patterns_for_command import ABOUT
 from src.common.patterns_for_command import DELIVERY
 from src.common.patterns_for_command import MENU
@@ -32,7 +35,23 @@ async def menu_cmd(message: types.Message):
 @user_private_router.message(F.text.lower().regexp(DELIVERY))
 @user_private_router.message(Command("shipping"))
 async def shipping_cmd(message: types.Message):
-    await message.answer("Варіанти доставки:")
+    text = as_list(as_marked_section(
+        Bold("Варіанти доставки"),
+        "Курьер",
+        "Самовивіз з закладу",
+        marker="✅ "
+
+    ),
+        as_marked_section(
+            Bold("Не підтримується(Поки що)"),
+            "Голубина пошта",
+            "Поштомат",
+            marker="🙅 "
+        ),
+        sep=f"\n{'-'* 45}\n"
+    )
+
+    await message.answer(text.as_html())
 
 
 @user_private_router.message(F.text.lower().regexp(ABOUT))
