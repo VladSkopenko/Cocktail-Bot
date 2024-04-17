@@ -10,7 +10,7 @@ from src.common.patterns_for_command import DELIVERY
 from src.common.patterns_for_command import MENU
 from src.common.patterns_for_command import PAYMENT
 from src.filters.chat_types import ChatTypeFilter
-
+from src.key_bords import reply
 user_private_router = Router()
 user_private_router.message.filter(ChatTypeFilter(["private"]))
 
@@ -18,7 +18,7 @@ user_private_router.message.filter(ChatTypeFilter(["private"]))
 @user_private_router.message(or_f(CommandStart(), (F.text.lower() == "привіт")))
 async def start_cmd(message: types.Message):
     user_fullname = message.from_user.full_name
-    await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник")
+    await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник", reply_markup=reply.start_key_boards)
 
 
 @user_private_router.message(F.text.lower().regexp(MENU))
