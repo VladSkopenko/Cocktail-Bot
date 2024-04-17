@@ -8,9 +8,11 @@ start_key_boards = ReplyKeyboardMarkup(
             KeyboardButton(text="Меню"),
             KeyboardButton(text="Доставка"),
         ],
+
         {
             KeyboardButton(text="Про бота"),
             KeyboardButton(text="Оплата"),
+            KeyboardButton(text='Залишити відгук'),
         }
     ],
     resize_keyboard=True,

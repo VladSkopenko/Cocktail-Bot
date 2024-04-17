@@ -9,6 +9,7 @@ from src.common.patterns_for_command import ABOUT
 from src.common.patterns_for_command import DELIVERY
 from src.common.patterns_for_command import MENU
 from src.common.patterns_for_command import PAYMENT
+from src.common.patterns_for_command import REVIEWS
 from src.filters.chat_types import ChatTypeFilter
 from src.key_bords import reply
 user_private_router = Router()
@@ -43,6 +44,12 @@ async def about_cmd(message: types.Message):
 @user_private_router.message(Command("payment"))
 async def payment_cmd(message: types.Message):
     await message.answer("Варіанти оплати")
+
+
+@user_private_router.message(F.text.lower().regexp(REVIEWS))
+@user_private_router.message(Command("review"))
+async def review_cmd(message: types.Message):
+    await message.answer("Залишити відгук:")
 
 @user_private_router.message(F.text)
 async def payment_cmd(message: types.Message):
