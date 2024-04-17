@@ -24,7 +24,7 @@ async def start_cmd(message: types.Message):
 @user_private_router.message(F.text.lower().regexp(MENU))
 @user_private_router.message(Command(MENU))
 async def menu_cmd(message: types.Message):
-    await message.answer("Вот меню:")
+    await message.answer("Вот меню:", reply_markup=reply.delete_key_boards)
 
 
 @user_private_router.message(F.text.lower().regexp(DELIVERY))
