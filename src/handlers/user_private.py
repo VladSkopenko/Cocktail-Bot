@@ -44,6 +44,6 @@ async def about_cmd(message: types.Message):
 async def payment_cmd(message: types.Message):
     await message.answer("Варіанти оплати")
 
-# @user_private_router.message(F.text)
-# async def payment_cmd(message: types.Message):
-#     await message.answer("Magick")
+@user_private_router.message(F.text)
+async def payment_cmd(message: types.Message):
+    await message.answer("Magick")
