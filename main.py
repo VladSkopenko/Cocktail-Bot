@@ -10,12 +10,12 @@ from src.handlers.user_group import user_group_router
 from src.handlers.non_text import non_text_router
 from src.common.bot_command_list import private
 from src.common.alloweb_updates import ALLOWED_UPDATES
-
+from aiogram.enums import ParseMode
 load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher()
 
 dp.include_router(user_private_router)

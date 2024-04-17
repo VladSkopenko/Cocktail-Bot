@@ -4,7 +4,7 @@ from aiogram import types
 from aiogram.filters import Command
 from aiogram.filters import CommandStart
 from aiogram.filters import or_f
-
+from aiogram.utils.formatting import Bold, as_list, as_marked_section
 from src.common.patterns_for_command import ABOUT
 from src.common.patterns_for_command import DELIVERY
 from src.common.patterns_for_command import MENU
@@ -12,6 +12,7 @@ from src.common.patterns_for_command import PAYMENT
 from src.common.patterns_for_command import REVIEWS
 from src.filters.chat_types import ChatTypeFilter
 from src.key_bords import reply
+
 user_private_router = Router()
 user_private_router.message.filter(ChatTypeFilter(["private"]))
 
@@ -25,7 +26,7 @@ async def start_cmd(message: types.Message):
 @user_private_router.message(F.text.lower().regexp(MENU))
 @user_private_router.message(Command(MENU))
 async def menu_cmd(message: types.Message):
-    await message.answer("Вот меню:", reply_markup=reply.delete_key_boards)
+    await message.answer("Вот меню:")
 
 
 @user_private_router.message(F.text.lower().regexp(DELIVERY))
@@ -43,7 +44,15 @@ async def about_cmd(message: types.Message):
 @user_private_router.message(F.text.lower().regexp(PAYMENT))
 @user_private_router.message(Command("payment"))
 async def payment_cmd(message: types.Message):
-    await message.answer("Варіанти оплати")
+    text = as_marked_section(
+        Bold("Варіанти оплати"),
+        "Оплата карткою в боті",
+        "При отриманні карта/кеш",
+        "В закладі карта/кеш",
+        marker="✅ "
+
+    )
+    await message.answer(text.as_html())
 
 
 @user_private_router.message(F.text.lower().regexp(REVIEWS))
@@ -51,6 +60,7 @@ async def payment_cmd(message: types.Message):
 async def review_cmd(message: types.Message):
     await message.answer("Залишити відгук:")
 
+
 @user_private_router.message(F.text)
-async def payment_cmd(message: types.Message):
+async def magick_cmd(message: types.Message):
     await message.answer("Magick")
