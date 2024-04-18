@@ -30,6 +30,7 @@ async def start_cmd(message: types.Message):
                             "Варіанти оплати",
                             "Варіанти доставки",
                             "Відгуки",
+                            "Адмін",
                             placeholder="Що вас цікавить?",
                             sizes=(2, 2)
                         ),

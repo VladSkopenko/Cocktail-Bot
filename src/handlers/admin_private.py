@@ -5,6 +5,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State
 from aiogram.fsm.state import StatesGroup
 
+from src.common.patterns_for_command import ADMIN
 from src.filters.chat_types import ChatTypeFilter, IsAdmin
 from src.key_bords.reply import get_keyboard
 
@@ -21,6 +22,7 @@ admin_key_board = get_keyboard(
 )
 
 
+@admin_router.message(F.text.lower().regexp(ADMIN))
 @admin_router.message(Command("admin"))
 async def start_work(message: types.Message):
     await message.answer("Що бажаєте зробити?", reply_markup=admin_key_board)
@@ -49,6 +51,14 @@ class AddProduct(StatesGroup):
     price = State()
     image = State()
 
+    texts = {
+        "AddProduct:name": "Введіть назву знову",
+        "AddProduct:description": "Введіть опис знову",
+        "AddProduct:price": "Введіть ціну знову",
+        "AddProduct:image": "Завантажте нове фото",
+
+    }
+
 
 @admin_router.message(StateFilter(None), F.text == "Додати коктейль")
 async def add_product(message: types.Message, state: FSMContext):
@@ -68,10 +78,21 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     await message.answer("Галя відміна", reply_markup=admin_key_board)
 
 
-@admin_router.message(Command("назад"))
-@admin_router.message(F.text.casefold() == "назад")
+@admin_router.message(StateFilter("*"), Command("назад"))
+@admin_router.message(StateFilter("*"), F.text.casefold() == "назад")
 async def cancel_handler(message: types.Message, state: FSMContext) -> None:
-    await message.answer(f"Ок, вы повернулись до попереденього кроку")
+    current_state = await state.get_state()
+    if current_state == AddProduct.name:
+        await message.answer("Це перший крок, напишіть назву товара або оберіть відміну")
+        return
+    previous = None
+
+    for step in AddProduct.__all_states__:
+        if step.state == current_state:
+            await state.set_state(previous)
+            await message.answer(f"Ок ви повернулись до попереднього кроку \n{AddProduct.texts[previous.state]}")
+            return
+        previous = step
 
 
 @admin_router.message(StateFilter(AddProduct.name), F.text)
@@ -88,14 +109,14 @@ async def add_description(message: types.Message, state: FSMContext):
     await state.set_state(AddProduct.price)
 
 
-@admin_router.message(F.text)
+@admin_router.message(StateFilter(AddProduct.price), F.text)
 async def add_price(message: types.Message, state: FSMContext):
     await state.update_data(price=message.text)
     await message.answer("Завантажте зображення коктейлю")
     await state.set_state(AddProduct.image)
 
 
-@admin_router.message(F.photo)
+@admin_router.message(StateFilter(AddProduct.image), F.photo)
 async def add_image(message: types.Message, state: FSMContext):
     await state.update_data(image=message.photo[-1].file_id)
     await message.answer("Коктейль додано", reply_markup=admin_key_board)
