@@ -17,6 +17,8 @@ admin_key_board = get_keyboard(
     "Видалити коктейль",
     "Змінити коктейль",
     "Показати всі коктейлі",
+    "Назад",
+    "Скидання",
     placeholder="Оберіть дію",
     sizes=(2, 2)
 )
@@ -67,9 +69,8 @@ async def add_product(message: types.Message, state: FSMContext):
     )
     await state.set_state(AddProduct.name)
 
-
-@admin_router.message(StateFilter("*"), Command("відміна"))
-@admin_router.message(StateFilter("*"), F.text.casefold() == "відміна")
+@admin_router.message(StateFilter("*"), Command("скидання"))
+@admin_router.message(StateFilter("*"), F.text.casefold() == "скидання")
 async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     current_state = await state.get_state()
     if not current_state:
