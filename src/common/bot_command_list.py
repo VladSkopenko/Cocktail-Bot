@@ -7,4 +7,6 @@ private = [
     BotCommand(command="payment", description="Варіанти оплати"),
     BotCommand(command="shipping", description="Варіанти доставки"),
     BotCommand(command="review", description="Залишити відгук"),
+    BotCommand(command="admin", description="Режим адміністратора"),
+
 ]
