@@ -14,7 +14,7 @@ from src.common.patterns_for_command import MENU
 from src.common.patterns_for_command import PAYMENT
 from src.common.patterns_for_command import REVIEWS
 from src.filters.chat_types import ChatTypeFilter
-from src.key_bords import reply
+from src.key_bords.reply import get_keyboard
 
 user_private_router = Router()
 user_private_router.message.filter(ChatTypeFilter(["private"]))
@@ -23,7 +23,17 @@ user_private_router.message.filter(ChatTypeFilter(["private"]))
 @user_private_router.message(or_f(CommandStart(), (F.text.lower() == "привіт")))
 async def start_cmd(message: types.Message):
     user_fullname = message.from_user.full_name
-    await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник", reply_markup=reply.start_key_boards)
+    await message.reply(f"Привіт ,{user_fullname}, я віртуальний помічник",
+                        reply_markup=get_keyboard(
+                            "Меню",
+                            "Про бота",
+                            "Варіанти оплати",
+                            "Варіанти доставки",
+                            "Відгуки",
+                            placeholder="Що вас цікавить?",
+                            sizes=(2, 2)
+                        ),
+                        )
 
 
 @user_private_router.message(F.text.lower().regexp(MENU))
@@ -48,7 +58,7 @@ async def shipping_cmd(message: types.Message):
             "Поштомат",
             marker="🙅 "
         ),
-        sep=f"\n{'-'* 45}\n"
+        sep=f"\n{'-' * 50}\n"
     )
 
     await message.answer(text.as_html())
