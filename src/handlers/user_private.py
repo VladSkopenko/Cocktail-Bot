@@ -90,6 +90,3 @@ async def review_cmd(message: types.Message):
     await message.answer("Залишити відгук:")
 
 
-@user_private_router.message(F.text)
-async def magick_cmd(message: types.Message):
-    await message.answer("Magick")

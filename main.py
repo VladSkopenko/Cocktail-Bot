@@ -13,16 +13,19 @@ from src.common.alloweb_updates import ALLOWED_UPDATES
 from aiogram.enums import ParseMode
 from aiogram import Bot
 from aiogram.client.bot import DefaultBotProperties
+from src.handlers.admin_private import admin_router
 load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")
 default = DefaultBotProperties(parse_mode=ParseMode.HTML)
 bot = Bot(token=TOKEN, default=default)
+bot.my_admins_list = []
 dp = Dispatcher()
 
 dp.include_router(user_private_router)
 dp.include_router(non_text_router)
 dp.include_router(user_group_router)
+dp.include_router(admin_router)
 
 
 async def main():
