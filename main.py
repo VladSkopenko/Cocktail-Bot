@@ -23,9 +23,9 @@ bot.my_admins_list = []
 dp = Dispatcher()
 
 dp.include_router(user_private_router)
-dp.include_router(non_text_router)
 dp.include_router(user_group_router)
 dp.include_router(admin_router)
+dp.include_router(non_text_router)
 
 
 async def main():
