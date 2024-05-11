@@ -1,18 +1,36 @@
+import contextlib
 import os
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
-from src.database.models import Base
-
-engine = create_async_engine(os.getenv('POSTGRES_URL'), echo=True)
-
-session_maker = async_sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+from sqlalchemy.ext.asyncio import async_sessionmaker
+from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlalchemy.ext.asyncio import create_async_engine
 
 
-async def create_db():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+class DataBaseSessionManager:
+    def __init__(self, url: str):
+        self._engine: AsyncEngine | None = create_async_engine(url)
+        self._session_maker: async_sessionmaker = async_sessionmaker(
+            autoflush=False, autocommit=False, bind=self._engine
+        )
+
+    @contextlib.asynccontextmanager
+    async def session(self):
+        if self._session_maker is None:
+            raise Exception("Session is not initialized")
+        session = self._session_maker()
+        try:
+            yield session
+
+        except Exception:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()
 
 
-async def drop_db():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
+sessionmanager = DataBaseSessionManager("postgresql+asyncpg://postgres:postgres@localhost:5432/postgres")
+
+
+async def get_db():
+    async with sessionmanager.session() as session:
+        yield session
