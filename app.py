@@ -1,7 +1,6 @@
 import asyncio
 import os
 
-
 from aiogram import Dispatcher
 from aiogram.types import BotCommandScopeAllPrivateChats
 from dotenv import load_dotenv
@@ -14,6 +13,7 @@ from aiogram.enums import ParseMode
 from aiogram import Bot
 from aiogram.client.bot import DefaultBotProperties
 from src.handlers.admin_private import admin_router
+
 load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")

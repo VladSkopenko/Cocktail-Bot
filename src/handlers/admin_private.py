@@ -30,17 +30,17 @@ async def start_work(message: types.Message):
     await message.answer("Що бажаєте зробити?", reply_markup=admin_key_board)
 
 
-@admin_router.message(F.text == "Показати всі коктейлі")
+@admin_router.message(F.text == "Показати всі коктейлі" or "all")
 async def starring_at_product(message: types.Message):
     await message.answer("ОК, ось список коктейлів")
 
 
-@admin_router.message(F.text == "Змінити коктейль")
+@admin_router.message(F.text == "Змінити коктейль" or "change")
 async def change_product(message: types.Message):
     await message.answer("ОК, ось список коктейлів")
 
 
-@admin_router.message(F.text == "Видалити коктейль")
+@admin_router.message(F.text == "Видалити коктейль" or "delete")
 async def delete_product(message: types.Message):
     await message.answer("Оберіть товар(и) для видалення")
 
@@ -62,12 +62,13 @@ class AddProduct(StatesGroup):
     }
 
 
-@admin_router.message(StateFilter(None), F.text == "Додати коктейль")
+@admin_router.message(StateFilter(None), F.text == "Додати коктейль" or "add")
 async def add_product(message: types.Message, state: FSMContext):
     await message.answer(
         "Введіть назву коктейлю", reply_markup=types.ReplyKeyboardRemove()
     )
     await state.set_state(AddProduct.name)
+
 
 @admin_router.message(StateFilter("*"), Command("скидання"))
 @admin_router.message(StateFilter("*"), F.text.casefold() == "скидання")
