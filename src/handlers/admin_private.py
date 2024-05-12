@@ -7,10 +7,9 @@ from aiogram.fsm.state import StatesGroup
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.common.patterns_for_command import ADMIN
-from src.database.models import Cocktail
 from src.filters.chat_types import ChatTypeFilter, IsAdmin
 from src.key_bords.reply import get_keyboard
-
+from src.repository.add_cocktail import repository_add_cocktail
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -50,27 +49,27 @@ async def delete_product(message: types.Message):
 
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)
 
-class AddProduct(StatesGroup):
+class AddCocktail(StatesGroup):
     name = State()
     description = State()
     price = State()
     image = State()
 
     texts = {
-        "AddProduct:name": "Введіть назву знову",
-        "AddProduct:description": "Введіть опис знову",
-        "AddProduct:price": "Введіть ціну знову",
-        "AddProduct:image": "Завантажте нове фото",
+        "AddCocktail:name": "Введіть назву знову",
+        "AddCocktail:description": "Введіть опис знову",
+        "AddCocktail:price": "Введіть ціну знову",
+        "AddCocktail:image": "Завантажте нове фото",
 
     }
 
 
 @admin_router.message(StateFilter(None), F.text == "Додати коктейль" or "add")
-async def add_product(message: types.Message, state: FSMContext):
+async def add_cocktail(message: types.Message, state: FSMContext):
     await message.answer(
         "Введіть назву коктейлю", reply_markup=types.ReplyKeyboardRemove()
     )
-    await state.set_state(AddProduct.name)
+    await state.set_state(AddCocktail.name)
 
 
 @admin_router.message(StateFilter("*"), Command("скидання"))
@@ -87,49 +86,44 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
 @admin_router.message(StateFilter("*"), F.text.casefold() == "назад")
 async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     current_state = await state.get_state()
-    if current_state == AddProduct.name:
+    if current_state == AddCocktail.name:
         await message.answer("Це перший крок, напишіть назву товара або оберіть відміну")
         return
     previous = None
 
-    for step in AddProduct.__all_states__:
+    for step in AddCocktail.__all_states__:
         if step.state == current_state:
             await state.set_state(previous)
-            await message.answer(f"Ок ви повернулись до попереднього кроку \n{AddProduct.texts[previous.state]}")
+            await message.answer(f"Ок ви повернулись до попереднього кроку \n{AddCocktail.texts[previous.state]}")
             return
         previous = step
 
 
-@admin_router.message(StateFilter(AddProduct.name), F.text)
+@admin_router.message(StateFilter(AddCocktail.name), F.text)
 async def add_name(message: types.Message, state: FSMContext):
     await state.update_data(name=message.text)
     await message.answer("Введіть опис коктейлю")
-    await state.set_state(AddProduct.description)
+    await state.set_state(AddCocktail.description)
 
 
-@admin_router.message(StateFilter(AddProduct.description), F.text)
+@admin_router.message(StateFilter(AddCocktail.description), F.text)
 async def add_description(message: types.Message, state: FSMContext):
     await state.update_data(description=message.text)
     await message.answer("Введіть вартість коктейлю")
-    await state.set_state(AddProduct.price)
+    await state.set_state(AddCocktail.price)
 
 
-@admin_router.message(StateFilter(AddProduct.price), F.text)
+@admin_router.message(StateFilter(AddCocktail.price), F.text)
 async def add_price(message: types.Message, state: FSMContext):
     await state.update_data(price=message.text)
     await message.answer("Завантажте зображення коктейлю")
-    await state.set_state(AddProduct.image)
+    await state.set_state(AddCocktail.image)
 
 
-@admin_router.message(StateFilter(AddProduct.image), F.photo)
+@admin_router.message(StateFilter(AddCocktail.image), F.photo)
 async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
     await state.update_data(image=message.photo[-1].file_id)
     await message.answer("Коктейль додано", reply_markup=admin_key_board)
     data = await state.get_data()
-    cocktail = Cocktail(name=data["name"],
-                        description=data["description"],
-                        image=data["image"],
-                        price=float(data["price"]))
-    session.add(cocktail)
-    await session.commit()
+    await repository_add_cocktail(session, data)
     await state.clear()
