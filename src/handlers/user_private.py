@@ -50,7 +50,7 @@ async def menu_cmd(message: types.Message, session: AsyncSession):
             f"Опис: {cocktail.description}\n"
             f"Вартість: {round(cocktail.price, 2)}",
         )
-    await message.answer("ОК, ось список коктейлів")
+    await message.answer("ОК, ось список коктейлів⏫")
 
 
 @user_private_router.message(F.text.lower().regexp(DELIVERY))

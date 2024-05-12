@@ -66,7 +66,7 @@ async def starring_at_product(message: types.Message, session: AsyncSession):
             reply_markup=get_callback_btns(
                 btns={
                     "Видалити": f"delete_{cocktail.id}",
-                    "Редагувати": f"edit_{cocktail.id}",
+                    "Редагувати": f"change_{cocktail.id}",
                 }
             ),
         )
@@ -78,7 +78,7 @@ async def delete_cocktail(callback: types.CallbackQuery, session: AsyncSession):
     cocktail_id = int(callback.data.split("_")[-1])
     await repository_delete_cocktail_by_id(session, cocktail_id)
     await callback.answer("Коктейль видалено!⏫")
-    await callback.message.answer("Коктейль видалено!")
+    await callback.message.answer("Коктейль видалено!⏫")
 
 
 @admin_router.callback_query(StateFilter(None), F.data.startswith("change_"))
@@ -86,14 +86,15 @@ async def change_cocktail_callback(
     callback: types.CallbackQuery, state: FSMContext, session: AsyncSession
 ):
     cocktail_id = callback.data.split("_")[-1]
+    cocktail_id = int(cocktail_id)
 
-    cocktail_for_change = await repository_get_cocktail(session, int(cocktail_id))
+    cocktail_for_change = await repository_get_cocktail(session, cocktail_id)
 
     AddCocktail.cocktail_for_change = cocktail_for_change
 
-    await callback.answer()
+    await callback.answer("Коктейль вибрано!⏫")
     await callback.message.answer(
-        "Введіть назву коктейля", reply_markup=types.ReplyKeyboardRemove()
+        "Введіть нову назву або '-' щоб пропустити це поле", reply_markup=types.ReplyKeyboardRemove()
     )
     await state.set_state(AddCocktail.name)
 
@@ -140,7 +141,7 @@ async def back_step_handler(message: types.Message, state: FSMContext) -> None:
         previous = step
 
 
-@admin_router.message(StateFilter(AddCocktail.name), or_f(F.text, F.text == ""))
+@admin_router.message(StateFilter(AddCocktail.name), or_f(F.text, F.text == "-"))
 async def add_name(message: types.Message, state: FSMContext):
     if message.text == "":
         await state.update_data(name=AddCocktail.cocktail_for_change.name)
@@ -150,7 +151,7 @@ async def add_name(message: types.Message, state: FSMContext):
     await state.set_state(AddCocktail.description)
 
 
-@admin_router.message(StateFilter(AddCocktail.description), or_f(F.text, F.text == ""))
+@admin_router.message(StateFilter(AddCocktail.description), or_f(F.text, F.text == "-"))
 async def add_description(message: types.Message, state: FSMContext):
     if message.text == "":
         await state.update_data(description=AddCocktail.cocktail_for_change.description)
@@ -160,7 +161,7 @@ async def add_description(message: types.Message, state: FSMContext):
     await state.set_state(AddCocktail.price)
 
 
-@admin_router.message(StateFilter(AddCocktail.price), or_f(F.text, F.text == ""))
+@admin_router.message(StateFilter(AddCocktail.price), or_f(F.text, F.text == "-"))
 async def add_price(message: types.Message, state: FSMContext):
     if message.text == "":
         await state.update_data(price=AddCocktail.cocktail_for_change.price)
@@ -170,7 +171,7 @@ async def add_price(message: types.Message, state: FSMContext):
     await state.set_state(AddCocktail.image)
 
 
-@admin_router.message(StateFilter(AddCocktail.image), or_f(F.photo, F.text == ""))
+@admin_router.message(StateFilter(AddCocktail.image), or_f(F.photo, F.text == "-"))
 async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
     if message.text == "":
         await state.update_data(image=AddCocktail.cocktail_for_change.image)
