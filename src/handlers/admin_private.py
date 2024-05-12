@@ -118,12 +118,12 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     if not current_state:
         return
     await state.clear()
-    await message.answer("Галя відміна", reply_markup=admin_key_board)
+    await message.answer("Все скинуто", reply_markup=admin_key_board)
 
 
 @admin_router.message(StateFilter("*"), Command("назад"))
 @admin_router.message(StateFilter("*"), F.text.casefold() == "назад")
-async def cancel_handler(message: types.Message, state: FSMContext) -> None:
+async def back_step_handler(message: types.Message, state: FSMContext) -> None:
     current_state = await state.get_state()
     if current_state == AddCocktail.name:
         await message.answer(
