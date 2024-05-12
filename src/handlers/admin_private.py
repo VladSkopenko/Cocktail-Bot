@@ -194,6 +194,7 @@ async def add_image(message: types.Message, state: FSMContext, session: AsyncSes
             f"Помилка: \n{str(e)}\nЗверніться до програміста, він знову хоче грошей",
             reply_markup=admin_key_board,
         )
+        logging.error(e)
         await state.clear()
 
     AddCocktail.cocktail_for_change = None
