@@ -1,4 +1,5 @@
 import enum
+from datetime import date
 from datetime import datetime
 
 from sqlalchemy import DateTime
@@ -15,8 +16,12 @@ from sqlalchemy.orm import relationship
 
 
 class Base(DeclarativeBase):
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), onupdate=func.now())
+    created_at: Mapped[date] = mapped_column(
+        "created_at", DateTime, default=func.now(), nullable=True
+    )
+    updated_at: Mapped[date] = mapped_column(
+        "updated_at", DateTime, default=func.now(), onupdate=func.now(), nullable=True
+    )
 
 
 class Alcohol(enum.Enum):
@@ -29,23 +34,29 @@ class Taste(Base):
     __tablename__ = "tastes"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     taste: Mapped[str] = mapped_column(String(60), nullable=False)
-    cocktails = relationship('Cocktail', secondary='taste_cocktails', back_populates='tastes')
+    cocktails = relationship(
+        "Cocktail", secondary="taste_cocktails", back_populates="tastes"
+    )
 
 
-class Coctail(Base):
-    __tablename__ = "coctails"
+class Cocktail(Base):
+    __tablename__ = "cocktails"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     image: Mapped[str] = mapped_column(String(255), nullable=False)
     price: Mapped[float] = mapped_column(Float(asdecimal=True), nullable=False)
-    author: Mapped[str] = mapped_column(String(100), nullable=False)
-    alcohol_level: Mapped[Enum] = mapped_column("alcohol_level", Enum(Alcohol), nullable=False)
-    tastes = relationship('Taste', secondary='taste_cocktails', back_populates='cocktails')
+    author: Mapped[str] = mapped_column(String(100), nullable=True)
+    alcohol_level: Mapped[Enum] = mapped_column(
+        "alcohol_level", Enum(Alcohol), nullable=True
+    )
+    tastes = relationship(
+        "Taste", secondary="taste_cocktails", back_populates="cocktails"
+    )
 
 
 class TasteCoctail(Base):
-    __tablename__ = "taste_coctails"
+    __tablename__ = "taste_cocktails"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     taste_id: Mapped[int] = mapped_column(ForeignKey("tastes.id"), nullable=False)
-    coctail_id: Mapped[int] = mapped_column(ForeignKey("coctails.id"), nullable=False)
+    cocktail_id: Mapped[int] = mapped_column(ForeignKey("cocktails.id"), nullable=False)

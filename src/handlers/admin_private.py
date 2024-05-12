@@ -4,10 +4,13 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State
 from aiogram.fsm.state import StatesGroup
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.common.patterns_for_command import ADMIN
+from src.database.models import Cocktail
 from src.filters.chat_types import ChatTypeFilter, IsAdmin
 from src.key_bords.reply import get_keyboard
+
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -119,9 +122,14 @@ async def add_price(message: types.Message, state: FSMContext):
 
 
 @admin_router.message(StateFilter(AddProduct.image), F.photo)
-async def add_image(message: types.Message, state: FSMContext):
+async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
     await state.update_data(image=message.photo[-1].file_id)
     await message.answer("Коктейль додано", reply_markup=admin_key_board)
     data = await state.get_data()
-    await message.answer(str(data))
+    cocktail = Cocktail(name=data["name"],
+                        description=data["description"],
+                        image=data["image"],
+                        price=float(data["price"]))
+    session.add(cocktail)
+    await session.commit()
     await state.clear()
