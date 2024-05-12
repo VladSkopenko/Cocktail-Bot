@@ -1,4 +1,6 @@
-from aiogram import F, Router, types
+from aiogram import F
+from aiogram import Router
+from aiogram import types
 from aiogram.filters import Command
 from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
@@ -7,24 +9,23 @@ from aiogram.fsm.state import StatesGroup
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.common.patterns_for_command import ADMIN
-from src.filters.chat_types import ChatTypeFilter, IsAdmin
+from src.filters.chat_types import ChatTypeFilter
+from src.filters.chat_types import IsAdmin
 from src.key_bords.reply import get_keyboard
-from src.repository.add_cocktail import repository_add_cocktail
 from src.loger.loger import logging
-
+from src.repository.add_cocktail import repository_add_cocktail
+from src.repository.add_cocktail import repository_get_all_cocktails
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
 
 admin_key_board = get_keyboard(
     "Додати коктейль",
-    "Видалити коктейль",
-    "Змінити коктейль",
-    "Показати всі коктейлі",
+    "Асортимент",
     "Назад",
     "Скидання",
     placeholder="Оберіть дію",
-    sizes=(2, 2),
+    sizes=(2,),
 )
 
 
@@ -34,19 +35,16 @@ async def start_work(message: types.Message):
     await message.answer("Що бажаєте зробити?", reply_markup=admin_key_board)
 
 
-@admin_router.message(F.text == "Показати всі коктейлі" or "all")
-async def starring_at_product(message: types.Message):
+@admin_router.message(F.text == "Асортимент")
+async def starring_at_product(message: types.Message, session: AsyncSession):
+    for cocktail in await repository_get_all_cocktails(session):
+        await message.answer_photo(
+            cocktail.image,
+            f"{cocktail.name}\n"
+            f"Опис: {cocktail.description}\n"
+            f"Вартість: {round(cocktail.price, 2)}",
+        )
     await message.answer("ОК, ось список коктейлів")
-
-
-@admin_router.message(F.text == "Змінити коктейль" or "change")
-async def change_product(message: types.Message):
-    await message.answer("ОК, ось список коктейлів")
-
-
-@admin_router.message(F.text == "Видалити коктейль" or "delete")
-async def delete_product(message: types.Message):
-    await message.answer("Оберіть товар(и) для видалення")
 
 
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)

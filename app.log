@@ -5,3 +5,406 @@
 2024-04-14 15:31:16,197 - INFO - Update id=28632376 is handled. Duration 203 ms by bot id=7153324522
 2024-04-14 15:31:54,766 - INFO - Polling stopped
 2024-04-14 15:31:55,024 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:18:26,607 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:18:26,827 - INFO - Start polling
+2024-05-12 23:18:26,886 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:18:31,165 - INFO - Update id=28633266 is handled. Duration 217 ms by bot id=7153324522
+2024-05-12 23:18:34,174 - INFO - Update id=28633267 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:18:38,370 - INFO - Update id=28633268 is handled. Duration 156 ms by bot id=7153324522
+2024-05-12 23:18:40,367 - INFO - select pg_catalog.version()
+2024-05-12 23:18:40,367 - INFO - [raw sql] ()
+2024-05-12 23:18:40,370 - INFO - select current_schema()
+2024-05-12 23:18:40,371 - INFO - [raw sql] ()
+2024-05-12 23:18:40,373 - INFO - show standard_conforming_strings
+2024-05-12 23:18:40,373 - INFO - [raw sql] ()
+2024-05-12 23:18:40,376 - INFO - BEGIN (implicit)
+2024-05-12 23:18:40,381 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:18:40,382 - INFO - [generated in 0.00050s] ()
+2024-05-12 23:18:40,678 - INFO - ROLLBACK
+2024-05-12 23:18:40,680 - INFO - Update id=28633269 is handled. Duration 406 ms by bot id=7153324522
+2024-05-12 23:21:43,683 - INFO - Polling stopped
+2024-05-12 23:21:43,944 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:21:50,726 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:21:51,105 - INFO - Start polling
+2024-05-12 23:21:51,162 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:21:52,691 - INFO - Update id=28633270 is handled. Duration 188 ms by bot id=7153324522
+2024-05-12 23:21:54,655 - INFO - select pg_catalog.version()
+2024-05-12 23:21:54,655 - INFO - [raw sql] ()
+2024-05-12 23:21:54,658 - INFO - select current_schema()
+2024-05-12 23:21:54,659 - INFO - [raw sql] ()
+2024-05-12 23:21:54,662 - INFO - show standard_conforming_strings
+2024-05-12 23:21:54,662 - INFO - [raw sql] ()
+2024-05-12 23:21:54,664 - INFO - BEGIN (implicit)
+2024-05-12 23:21:54,670 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:21:54,671 - INFO - [generated in 0.00053s] ()
+2024-05-12 23:21:54,738 - INFO - ROLLBACK
+2024-05-12 23:21:54,740 - INFO - Update id=28633271 is not handled. Duration 171 ms by bot id=7153324522
+2024-05-12 23:21:54,740 - ERROR - Cause exception while process update id=28633271 by bot id=7153324522
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 46, in menu_cmd
+    await message.answer_photo(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+2024-05-12 23:22:26,961 - INFO - Update id=28633272 is handled. Duration 172 ms by bot id=7153324522
+2024-05-12 23:22:28,359 - INFO - BEGIN (implicit)
+2024-05-12 23:22:28,360 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:22:28,360 - INFO - [cached since 33.69s ago] ()
+2024-05-12 23:22:28,411 - INFO - ROLLBACK
+2024-05-12 23:22:28,413 - INFO - Update id=28633273 is not handled. Duration 61 ms by bot id=7153324522
+2024-05-12 23:22:28,413 - ERROR - Cause exception while process update id=28633273 by bot id=7153324522
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 46, in menu_cmd
+    await message.answer_photo(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+2024-05-12 23:25:46,433 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:25:46,728 - INFO - Start polling
+2024-05-12 23:25:46,789 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:25:49,596 - INFO - Update id=28633274 is handled. Duration 265 ms by bot id=7153324522
+2024-05-12 23:25:51,680 - INFO - select pg_catalog.version()
+2024-05-12 23:25:51,680 - INFO - [raw sql] ()
+2024-05-12 23:25:51,683 - INFO - select current_schema()
+2024-05-12 23:25:51,683 - INFO - [raw sql] ()
+2024-05-12 23:25:51,686 - INFO - show standard_conforming_strings
+2024-05-12 23:25:51,687 - INFO - [raw sql] ()
+2024-05-12 23:25:51,689 - INFO - BEGIN (implicit)
+2024-05-12 23:25:51,695 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:25:51,695 - INFO - [generated in 0.00052s] ()
+2024-05-12 23:25:51,771 - INFO - ROLLBACK
+2024-05-12 23:25:51,773 - INFO - Update id=28633275 is not handled. Duration 187 ms by bot id=7153324522
+2024-05-12 23:25:51,773 - ERROR - Cause exception while process update id=28633275 by bot id=7153324522
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 47, in menu_cmd
+    await message.answer_photo(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\methods\base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\bot.py", line 492, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 178, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\client\session\base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag strong
+2024-05-12 23:26:23,986 - INFO - Polling stopped
+2024-05-12 23:26:24,249 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:26:27,942 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:26:28,153 - INFO - Start polling
+2024-05-12 23:26:28,202 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:26:29,984 - INFO - Update id=28633276 is handled. Duration 204 ms by bot id=7153324522
+2024-05-12 23:26:30,950 - INFO - select pg_catalog.version()
+2024-05-12 23:26:30,951 - INFO - [raw sql] ()
+2024-05-12 23:26:30,954 - INFO - select current_schema()
+2024-05-12 23:26:30,954 - INFO - [raw sql] ()
+2024-05-12 23:26:30,957 - INFO - show standard_conforming_strings
+2024-05-12 23:26:30,957 - INFO - [raw sql] ()
+2024-05-12 23:26:30,959 - INFO - BEGIN (implicit)
+2024-05-12 23:26:30,965 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:26:30,966 - INFO - [generated in 0.00052s] ()
+2024-05-12 23:26:31,212 - INFO - ROLLBACK
+2024-05-12 23:26:31,214 - INFO - Update id=28633277 is handled. Duration 343 ms by bot id=7153324522
+2024-05-12 23:27:27,212 - INFO - Update id=28633278 is handled. Duration 234 ms by bot id=7153324522
+2024-05-12 23:27:39,401 - INFO - Polling stopped
+2024-05-12 23:27:39,658 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:27:48,583 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:27:48,817 - INFO - Start polling
+2024-05-12 23:27:48,866 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:28:00,725 - INFO - Update id=28633279 is handled. Duration 219 ms by bot id=7153324522
+2024-05-12 23:28:05,366 - INFO - select pg_catalog.version()
+2024-05-12 23:28:05,366 - INFO - [raw sql] ()
+2024-05-12 23:28:05,369 - INFO - select current_schema()
+2024-05-12 23:28:05,370 - INFO - [raw sql] ()
+2024-05-12 23:28:05,373 - INFO - show standard_conforming_strings
+2024-05-12 23:28:05,374 - INFO - [raw sql] ()
+2024-05-12 23:28:05,376 - INFO - BEGIN (implicit)
+2024-05-12 23:28:05,382 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:28:05,382 - INFO - [generated in 0.00051s] ()
+2024-05-12 23:28:05,626 - INFO - ROLLBACK
+2024-05-12 23:28:05,632 - INFO - Update id=28633280 is handled. Duration 359 ms by bot id=7153324522
+2024-05-12 23:28:25,940 - INFO - Update id=28633281 is handled. Duration 203 ms by bot id=7153324522
+2024-05-12 23:28:34,722 - INFO - Update id=28633282 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:28:35,763 - INFO - Update id=28633283 is handled. Duration 77 ms by bot id=7153324522
+2024-05-12 23:28:36,894 - INFO - Update id=28633284 is handled. Duration 77 ms by bot id=7153324522
+2024-05-12 23:28:37,830 - INFO - Update id=28633285 is handled. Duration 109 ms by bot id=7153324522
+2024-05-12 23:28:38,482 - INFO - Update id=28633286 is handled. Duration 94 ms by bot id=7153324522
+2024-05-12 23:33:21,316 - INFO - BEGIN (implicit)
+2024-05-12 23:33:21,316 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:33:21,317 - INFO - [cached since 315.9s ago] ()
+2024-05-12 23:33:21,870 - INFO - ROLLBACK
+2024-05-12 23:33:21,872 - INFO - Update id=28633287 is handled. Duration 546 ms by bot id=7153324522
+2024-05-12 23:33:40,965 - INFO - Update id=28633288 is handled. Duration 187 ms by bot id=7153324522
+2024-05-12 23:33:42,585 - INFO - Update id=28633289 is handled. Duration 109 ms by bot id=7153324522
+2024-05-12 23:33:45,322 - INFO - Update id=28633290 is handled. Duration 94 ms by bot id=7153324522
+2024-05-12 23:33:59,182 - INFO - Update id=28633291 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:34:02,055 - INFO - Update id=28633292 is handled. Duration 234 ms by bot id=7153324522
+2024-05-12 23:34:04,559 - INFO - Update id=28633293 is handled. Duration 109 ms by bot id=7153324522
+2024-05-12 23:34:06,832 - INFO - Update id=28633294 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:34:22,715 - INFO - Update id=28633295 is handled. Duration 172 ms by bot id=7153324522
+2024-05-12 23:34:26,850 - INFO - Update id=28633296 is handled. Duration 63 ms by bot id=7153324522
+2024-05-12 23:34:27,953 - INFO - Update id=28633297 is handled. Duration 125 ms by bot id=7153324522
+2024-05-12 23:34:30,510 - INFO - Update id=28633298 is handled. Duration 61 ms by bot id=7153324522
+2024-05-12 23:34:31,093 - INFO - Update id=28633299 is handled. Duration 78 ms by bot id=7153324522
+2024-05-12 23:34:32,706 - INFO - Update id=28633300 is not handled. Duration 14 ms by bot id=7153324522
+2024-05-12 23:34:36,664 - INFO - Polling stopped
+2024-05-12 23:34:36,929 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:34:43,151 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:34:43,378 - INFO - Start polling
+2024-05-12 23:34:43,440 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:34:46,991 - INFO - Update id=28633301 is handled. Duration 235 ms by bot id=7153324522
+2024-05-12 23:34:48,608 - INFO - Update id=28633302 is not handled. Duration 15 ms by bot id=7153324522
+2024-05-12 23:35:14,563 - INFO - Update id=28633303 is not handled. Duration 15 ms by bot id=7153324522
+2024-05-12 23:36:37,053 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:36:37,281 - INFO - Start polling
+2024-05-12 23:36:37,331 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:36:38,652 - INFO - Update id=28633304 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:36:39,407 - INFO - Update id=28633305 is not handled. Duration 14 ms by bot id=7153324522
+2024-05-12 23:36:39,857 - INFO - Update id=28633306 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:36:40,143 - INFO - Update id=28633307 is not handled. Duration 15 ms by bot id=7153324522
+2024-05-12 23:37:11,792 - INFO - Polling stopped
+2024-05-12 23:37:12,043 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:37:26,450 - DEBUG - Using proactor: IocpProactor
+2024-05-12 23:37:26,747 - INFO - Start polling
+2024-05-12 23:37:26,799 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-12 23:37:27,201 - INFO - Update id=28633309 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:37:30,598 - INFO - Update id=28633310 is handled. Duration 219 ms by bot id=7153324522
+2024-05-12 23:37:33,742 - INFO - select pg_catalog.version()
+2024-05-12 23:37:33,743 - INFO - [raw sql] ()
+2024-05-12 23:37:33,745 - INFO - select current_schema()
+2024-05-12 23:37:33,746 - INFO - [raw sql] ()
+2024-05-12 23:37:33,749 - INFO - show standard_conforming_strings
+2024-05-12 23:37:33,749 - INFO - [raw sql] ()
+2024-05-12 23:37:33,751 - INFO - BEGIN (implicit)
+2024-05-12 23:37:33,757 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:37:33,757 - INFO - [generated in 0.00053s] ()
+2024-05-12 23:37:34,336 - INFO - ROLLBACK
+2024-05-12 23:37:34,337 - INFO - Update id=28633311 is handled. Duration 703 ms by bot id=7153324522
+2024-05-12 23:37:34,350 - INFO - BEGIN (implicit)
+2024-05-12 23:37:34,351 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:37:34,352 - INFO - [cached since 0.596s ago] ()
+2024-05-12 23:37:34,891 - INFO - ROLLBACK
+2024-05-12 23:37:34,892 - INFO - Update id=28633312 is handled. Duration 546 ms by bot id=7153324522
+2024-05-12 23:37:47,991 - INFO - Update id=28633313 is handled. Duration 79 ms by bot id=7153324522
+2024-05-12 23:38:29,829 - INFO - Update id=28633314 is handled. Duration 312 ms by bot id=7153324522
+2024-05-12 23:38:56,631 - INFO - Update id=28633315 is handled. Duration 250 ms by bot id=7153324522
+2024-05-12 23:39:00,317 - INFO - Update id=28633316 is handled. Duration 78 ms by bot id=7153324522
+2024-05-12 23:39:35,207 - INFO - BEGIN (implicit)
+2024-05-12 23:39:35,209 - INFO - INSERT INTO cocktails (name, description, image, price, author, alcohol_level, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::FLOAT, $5::VARCHAR, $6::alcohol, now(), now()) RETURNING cocktails.id, cocktails.created_at, cocktails.updated_at
+2024-05-12 23:39:35,210 - INFO - [generated in 0.00062s] ('Aperol', 'Легкий, солодкий.З апельсиновим лікером.', 'AgACAgIAAxkBAAIHTmZBKQbPOngfp72jTHLOGuzDDaIKAAJD1jEbke0QSqrqnhTLb0hpAQADAgADeAADNQQ', 220.0, None, None)
+2024-05-12 23:39:35,214 - INFO - COMMIT
+2024-05-12 23:39:35,238 - INFO - Update id=28633317 is handled. Duration 204 ms by bot id=7153324522
+2024-05-12 23:39:36,931 - INFO - BEGIN (implicit)
+2024-05-12 23:39:36,932 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:39:36,933 - INFO - [cached since 123.2s ago] ()
+2024-05-12 23:39:37,266 - INFO - ROLLBACK
+2024-05-12 23:39:37,267 - INFO - Update id=28633318 is handled. Duration 343 ms by bot id=7153324522
+2024-05-12 23:39:57,750 - INFO - BEGIN (implicit)
+2024-05-12 23:39:57,751 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-12 23:39:57,752 - INFO - [cached since 144s ago] ()
+2024-05-12 23:39:58,335 - INFO - ROLLBACK
+2024-05-12 23:39:58,337 - INFO - Update id=28633319 is handled. Duration 578 ms by bot id=7153324522
+2024-05-12 23:39:59,509 - INFO - Update id=28633320 is handled. Duration 0 ms by bot id=7153324522
+2024-05-12 23:40:09,791 - INFO - Update id=28633321 is handled. Duration 77 ms by bot id=7153324522
+2024-05-12 23:40:12,230 - INFO - Update id=28633322 is handled. Duration 94 ms by bot id=7153324522
+2024-05-12 23:40:13,547 - INFO - Update id=28633323 is handled. Duration 94 ms by bot id=7153324522
+2024-05-12 23:40:14,609 - INFO - Update id=28633324 is handled. Duration 204 ms by bot id=7153324522
+2024-05-12 23:40:17,237 - INFO - Update id=28633325 is handled. Duration 125 ms by bot id=7153324522
+2024-05-12 23:41:02,615 - INFO - Polling stopped
+2024-05-12 23:41:02,871 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
