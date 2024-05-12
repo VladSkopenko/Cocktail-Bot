@@ -36,3 +36,19 @@ async def repository_get_cocktail_by_id(
         )
     result = await session.execute(query)
     return result.scalar_one_or_none()
+
+
+async def repository_delete_cocktail_by_id(session: AsyncSession, cocktail_id: int):
+    query = delete(Cocktail).where(Cocktail.id == cocktail_id)
+    await session.execute(query)
+    await session.commit()
+
+
+async def orm_update_product(session: AsyncSession, cocktail_id: int, data):
+    query = update(Cocktail).where(Cocktail.id == cocktail_id).values(
+        name=data["name"],
+        description=data["description"],
+        price=float(data["price"]),
+        image=data["image"],)
+    await session.execute(query)
+    await session.commit()
