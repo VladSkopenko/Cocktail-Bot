@@ -18,6 +18,7 @@ from src.loger.loger import logging
 from src.repository.crud import repository_add_cocktail
 from src.repository.crud import repository_delete_cocktail_by_id
 from src.repository.crud import repository_get_all_cocktails
+from src.repository.crud import repository_get_cocktail_by_key
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -30,6 +31,21 @@ admin_key_board = get_keyboard(
     placeholder="Оберіть дію",
     sizes=(2,),
 )
+
+class AddCocktail(StatesGroup):
+    name = State()
+    description = State()
+    price = State()
+    image = State()
+
+    cocktail_for_change = None
+
+    texts = {
+        "AddCocktail:name": "Введіть назву знову",
+        "AddCocktail:description": "Введіть опис знову",
+        "AddCocktail:price": "Введіть ціну знову",
+        "AddCocktail:image": "Завантажте нове фото",
+    }
 
 
 @admin_router.message(F.text.lower().regexp(ADMIN))
@@ -64,21 +80,27 @@ async def delete_cocktail(callback: types.CallbackQuery, session: AsyncSession):
     await callback.message.answer("Коктейль видалено!")
 
 
+@admin_router.callback_query(StateFilter(None), F.data.startswith("change_"))
+async def change_product_callback(
+    callback: types.CallbackQuery, state: FSMContext, session: AsyncSession
+):
+    cocktail_id = callback.data.split("_")[-1]
+
+    cocktail_for_change = await repository_get_cocktail_by_key(session, int(cocktail_id), mode="by_id")
+
+    AddCocktail.product_for_change = cocktail_for_change
+
+    await callback.answer()
+    await callback.message.answer(
+        "Введіть назву коктейля", reply_markup=types.ReplyKeyboardRemove()
+    )
+    await state.set_state(AddCocktail.name)
+
+
+
+
+
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)
-
-
-class AddCocktail(StatesGroup):
-    name = State()
-    description = State()
-    price = State()
-    image = State()
-
-    texts = {
-        "AddCocktail:name": "Введіть назву знову",
-        "AddCocktail:description": "Введіть опис знову",
-        "AddCocktail:price": "Введіть ціну знову",
-        "AddCocktail:image": "Завантажте нове фото",
-    }
 
 
 @admin_router.message(StateFilter(None), F.text == "Додати коктейль" or "add")

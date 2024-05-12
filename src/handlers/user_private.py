@@ -35,7 +35,7 @@ async def start_cmd(message: types.Message):
             "Відгуки",
             "Адмін",
             placeholder="Що вас цікавить?",
-            sizes=(2, 2),
+            sizes=(2,),
         ),
     )
 
