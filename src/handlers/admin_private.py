@@ -6,6 +6,7 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State
 from aiogram.fsm.state import StatesGroup
+from aiogram.types import CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.common.patterns_for_command import ADMIN
@@ -14,8 +15,9 @@ from src.filters.chat_types import IsAdmin
 from src.key_bords.inline import get_callback_btns
 from src.key_bords.reply import get_keyboard
 from src.loger.loger import logging
-from src.repository.add_cocktail import repository_add_cocktail
-from src.repository.add_cocktail import repository_get_all_cocktails
+from src.repository.crud import repository_add_cocktail
+from src.repository.crud import repository_delete_cocktail_by_id
+from src.repository.crud import repository_get_all_cocktails
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -52,6 +54,14 @@ async def starring_at_product(message: types.Message, session: AsyncSession):
             ),
         )
     await message.answer("ОК, ось список коктейлів в асортименті")
+
+
+@admin_router.callback_query(F.data.startswith("delete_"))
+async def delete_cocktail(callback: types.CallbackQuery, session: AsyncSession):
+    cocktail_id = int(callback.data.split("_")[-1])
+    await repository_delete_cocktail_by_id(session, cocktail_id)
+    await callback.answer("Коктейль видалено!")
+    await callback.message.answer("Коктейль видалено!")
 
 
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)

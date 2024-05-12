@@ -23,7 +23,7 @@ async def repository_get_all_cocktails(session: AsyncSession):
     return result.scalars().all()
 
 
-async def repository_get_cocktail_by_id(
+async def repository_get_cocktail_by_key(
     session: AsyncSession, cocktail_key: int, mode: str = "by_id"
 ):
     if mode == "by_id":
@@ -44,7 +44,7 @@ async def repository_delete_cocktail_by_id(session: AsyncSession, cocktail_id: i
     await session.commit()
 
 
-async def orm_update_product(session: AsyncSession, cocktail_id: int, data):
+async def repository_update_product(session: AsyncSession, cocktail_id: int, data):
     query = update(Cocktail).where(Cocktail.id == cocktail_id).values(
         name=data["name"],
         description=data["description"],
