@@ -2,6 +2,7 @@ from sqlalchemy import select
 from sqlalchemy import update
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import load_only
 
 from src.database.models import Cocktail
 
@@ -23,19 +24,12 @@ async def repository_get_all_cocktails(session: AsyncSession):
     return result.scalars().all()
 
 
-async def repository_get_cocktail_by_key(
-    session: AsyncSession, cocktail_key: int, mode: str = "by_id"
+async def repository_get_cocktail(
+    session: AsyncSession, cocktail_id: int
 ):
-    if mode == "by_id":
-        query = select(Cocktail).where(Cocktail.id == cocktail_key)
-    elif mode == "by_name":
-        query = select(Cocktail).where(Cocktail.name == cocktail_key)
-    else:
-        raise ValueError(
-            "Непідтримуваний режим. Режим повинен бути 'by_id' або 'by_name."
-        )
+    query = select(Cocktail).where(Cocktail.id == cocktail_id)
     result = await session.execute(query)
-    return result.scalar_one_or_none()
+    return result.scalar()
 
 
 async def repository_delete_cocktail_by_id(session: AsyncSession, cocktail_id: int):
