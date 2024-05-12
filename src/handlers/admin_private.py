@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.common.patterns_for_command import ADMIN
 from src.filters.chat_types import ChatTypeFilter
 from src.filters.chat_types import IsAdmin
+from src.key_bords.inline import get_callback_btns
 from src.key_bords.reply import get_keyboard
 from src.loger.loger import logging
 from src.repository.add_cocktail import repository_add_cocktail
@@ -43,8 +44,14 @@ async def starring_at_product(message: types.Message, session: AsyncSession):
             f"{cocktail.name}\n"
             f"Опис: {cocktail.description}\n"
             f"Вартість: {round(cocktail.price, 2)}",
+            reply_markup=get_callback_btns(
+                btns={
+                    "Видалити": f"delete_{cocktail.id}",
+                    "Редагувати": f"edit_{cocktail.id}",
+                }
+            ),
         )
-    await message.answer("ОК, ось список коктейлів")
+    await message.answer("ОК, ось список коктейлів в асортименті")
 
 
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)
