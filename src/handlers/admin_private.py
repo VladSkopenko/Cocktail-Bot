@@ -10,6 +10,8 @@ from src.common.patterns_for_command import ADMIN
 from src.filters.chat_types import ChatTypeFilter, IsAdmin
 from src.key_bords.reply import get_keyboard
 from src.repository.add_cocktail import repository_add_cocktail
+from src.loger.loger import logging
+
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -22,7 +24,7 @@ admin_key_board = get_keyboard(
     "Назад",
     "Скидання",
     placeholder="Оберіть дію",
-    sizes=(2, 2)
+    sizes=(2, 2),
 )
 
 
@@ -49,6 +51,7 @@ async def delete_product(message: types.Message):
 
 # -------------------------------------------------------------------------------- Код ниже для машины состояний (FSM)
 
+
 class AddCocktail(StatesGroup):
     name = State()
     description = State()
@@ -60,7 +63,6 @@ class AddCocktail(StatesGroup):
         "AddCocktail:description": "Введіть опис знову",
         "AddCocktail:price": "Введіть ціну знову",
         "AddCocktail:image": "Завантажте нове фото",
-
     }
 
 
@@ -87,14 +89,18 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
 async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     current_state = await state.get_state()
     if current_state == AddCocktail.name:
-        await message.answer("Це перший крок, напишіть назву товара або оберіть відміну")
+        await message.answer(
+            "Це перший крок, напишіть назву товара або оберіть відміну"
+        )
         return
     previous = None
 
     for step in AddCocktail.__all_states__:
         if step.state == current_state:
             await state.set_state(previous)
-            await message.answer(f"Ок ви повернулись до попереднього кроку \n{AddCocktail.texts[previous.state]}")
+            await message.answer(
+                f"Ок ви повернулись до попереднього кроку \n{AddCocktail.texts[previous.state]}"
+            )
             return
         previous = step
 
@@ -124,6 +130,13 @@ async def add_price(message: types.Message, state: FSMContext):
 async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
     await state.update_data(image=message.photo[-1].file_id)
     await message.answer("Коктейль додано", reply_markup=admin_key_board)
-    data = await state.get_data()
-    await repository_add_cocktail(session, data)
-    await state.clear()
+    try:
+        data = await state.get_data()
+        await repository_add_cocktail(session, data)
+        await state.clear()
+    except Exception as e:
+        await message.answer(
+            "Коктейль не додано, зверніться до программіста він знову хоче грошей"
+        )
+        await state.clear()
+        logging.error(f"Ошибка при добавлении коктейля: {e}")
