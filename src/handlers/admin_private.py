@@ -19,6 +19,7 @@ from src.repository.crud import repository_add_cocktail
 from src.repository.crud import repository_delete_cocktail_by_id
 from src.repository.crud import repository_get_all_cocktails
 from src.repository.crud import repository_get_cocktail
+from src.repository.crud import repository_update_cocktail
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
@@ -94,7 +95,8 @@ async def change_cocktail_callback(
 
     await callback.answer("Коктейль вибрано!⏫")
     await callback.message.answer(
-        "Введіть нову назву або '-' щоб пропустити це поле", reply_markup=types.ReplyKeyboardRemove()
+        "Введіть нову назву або '-' щоб пропустити це поле",
+        reply_markup=types.ReplyKeyboardRemove(),
     )
     await state.set_state(AddCocktail.name)
 
@@ -143,7 +145,7 @@ async def back_step_handler(message: types.Message, state: FSMContext) -> None:
 
 @admin_router.message(StateFilter(AddCocktail.name), or_f(F.text, F.text == "-"))
 async def add_name(message: types.Message, state: FSMContext):
-    if message.text == "":
+    if message.text == "-":
         await state.update_data(name=AddCocktail.cocktail_for_change.name)
     else:
         await state.update_data(name=message.text)
@@ -153,7 +155,7 @@ async def add_name(message: types.Message, state: FSMContext):
 
 @admin_router.message(StateFilter(AddCocktail.description), or_f(F.text, F.text == "-"))
 async def add_description(message: types.Message, state: FSMContext):
-    if message.text == "":
+    if message.text == "-":
         await state.update_data(description=AddCocktail.cocktail_for_change.description)
     else:
         await state.update_data(description=message.text)
@@ -163,7 +165,7 @@ async def add_description(message: types.Message, state: FSMContext):
 
 @admin_router.message(StateFilter(AddCocktail.price), or_f(F.text, F.text == "-"))
 async def add_price(message: types.Message, state: FSMContext):
-    if message.text == "":
+    if message.text == "-":
         await state.update_data(price=AddCocktail.cocktail_for_change.price)
     else:
         await state.update_data(price=message.text)
@@ -173,19 +175,25 @@ async def add_price(message: types.Message, state: FSMContext):
 
 @admin_router.message(StateFilter(AddCocktail.image), or_f(F.photo, F.text == "-"))
 async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
-    if message.text == "":
+    if message.text and message.text == "-":
         await state.update_data(image=AddCocktail.cocktail_for_change.image)
+
     else:
         await state.update_data(image=message.photo[-1].file_id)
     data = await state.get_data()
     try:
-        await repository_add_cocktail(session, data)
-        await message.answer("Коктейль додано", reply_markup=admin_key_board)
+        if AddCocktail.cocktail_for_change:
+            await repository_update_cocktail(session, AddCocktail.cocktail_for_change.id, data)
+        else:
+            await repository_add_cocktail(session, data)
+        await message.answer("Операція успішна", reply_markup=admin_key_board)
         await state.clear()
+
     except Exception as e:
         await message.answer(
-            "Коктейль не додано, зверніться до программіста він знову хоче грошей"
+            f"Помилка: \n{str(e)}\nЗверніться до програміста, він знову хоче грошей",
+            reply_markup=admin_key_board,
         )
         await state.clear()
-        logging.error(f"Ошибка при добавлении коктейля: {e}")
+
     AddCocktail.cocktail_for_change = None

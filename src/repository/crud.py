@@ -38,7 +38,7 @@ async def repository_delete_cocktail_by_id(session: AsyncSession, cocktail_id: i
     await session.commit()
 
 
-async def repository_update_product(session: AsyncSession, cocktail_id: int, data):
+async def repository_update_cocktail(session: AsyncSession, cocktail_id: int, data):
     query = update(Cocktail).where(Cocktail.id == cocktail_id).values(
         name=data["name"],
         description=data["description"],
