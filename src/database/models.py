@@ -1,9 +1,7 @@
-import enum
 from datetime import date
 
 from sqlalchemy import BigInteger
 from sqlalchemy import DateTime
-from sqlalchemy import Enum
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
 from sqlalchemy import func
@@ -40,21 +38,6 @@ class Category(Base):
     name: Mapped[str] = mapped_column(String(150), nullable=False)
 
 
-class Alcohol(enum.Enum):
-    LIGHT = "light"
-    STRONG = "strong"
-    MEDIUM = "medium"
-
-
-class Taste(Base):
-    __tablename__ = "tastes"
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    taste: Mapped[str] = mapped_column(String(60), nullable=False)
-    cocktails = relationship(
-        "Cocktail", secondary="taste_cocktails", back_populates="tastes"
-    )
-
-
 class Cocktail(Base):
     __tablename__ = "cocktails"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -67,21 +50,7 @@ class Cocktail(Base):
     category_id: Mapped[int] = mapped_column(
         ForeignKey("category.id", ondelete="CASCADE"), nullable=False
     )
-    category: Mapped["Category"] = relationship(backref="product")
-
-    alcohol_level: Mapped[Enum] = mapped_column(
-        "alcohol_level", Enum(Alcohol), nullable=True
-    )
-    tastes = relationship(
-        "Taste", secondary="taste_cocktails", back_populates="cocktails"
-    )
-
-
-class TasteCoctail(Base):
-    __tablename__ = "taste_cocktails"
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    taste_id: Mapped[int] = mapped_column(ForeignKey("tastes.id"), nullable=False)
-    cocktail_id: Mapped[int] = mapped_column(ForeignKey("cocktails.id"), nullable=False)
+    category: Mapped["Category"] = relationship(backref="cocktails")
 
 
 class User(Base):
@@ -95,12 +64,16 @@ class User(Base):
 
 
 class Cart(Base):
-    __tablename__ = 'cart'
+    __tablename__ = "cart"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('user.user_id', ondelete='CASCADE'), nullable=False)
-    cocktail_id: Mapped[int] = mapped_column(ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey("user.user_id", ondelete="CASCADE"), nullable=False
+    )
+    cocktail_id: Mapped[int] = mapped_column(
+        ForeignKey("cocktails.id", ondelete="CASCADE"), nullable=False
+    )
     quantity: Mapped[int]
 
-    user: Mapped['User'] = relationship(backref='cart')
-    cocktail: Mapped['Cocktail'] = relationship(backref='cart')
+    user: Mapped["User"] = relationship(backref="cart")
+    cocktail: Mapped["Cocktail"] = relationship(backref="cart")

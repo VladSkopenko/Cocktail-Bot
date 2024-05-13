@@ -1269,3 +1269,336 @@ FROM cocktails
 2024-05-13 16:47:09,670 - INFO - Update id=28633552 is handled. Duration 812 ms by bot id=7153324522
 2024-05-13 16:48:05,161 - INFO - Polling stopped
 2024-05-13 16:48:05,420 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:52:49,153 - DEBUG - Using proactor: IocpProactor
+2024-05-14 00:52:49,501 - INFO - Start polling
+2024-05-14 00:52:49,551 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:53:03,406 - INFO - Update id=28633565 is handled. Duration 217 ms by bot id=7153324522
+2024-05-14 00:53:06,024 - INFO - select pg_catalog.version()
+2024-05-14 00:53:06,024 - INFO - [raw sql] ()
+2024-05-14 00:53:06,028 - INFO - select current_schema()
+2024-05-14 00:53:06,029 - INFO - [raw sql] ()
+2024-05-14 00:53:06,033 - INFO - show standard_conforming_strings
+2024-05-14 00:53:06,033 - INFO - [raw sql] ()
+2024-05-14 00:53:06,035 - INFO - BEGIN (implicit)
+2024-05-14 00:53:06,044 - INFO - ROLLBACK
+2024-05-14 00:53:06,045 - INFO - Update id=28633566 is not handled. Duration 327 ms by bot id=7153324522
+2024-05-14 00:53:06,045 - ERROR - Cause exception while process update id=28633566 by bot id=7153324522
+NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Cart.cocktail - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2423, in _determine_joins
+    self.primaryjoin = join_condition(
+                       ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\util.py", line 123, in join_condition
+    return Join._join_condition(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\selectable.py", line 1354, in _join_condition
+    raise exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Can't find any foreign key relationships between 'cart' and 'cocktails'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 46, in menu_cmd
+    for cocktail in await repository_get_all_cocktails(session):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\repository\repo_cockt.py", line 23, in repository_get_all_cocktails
+    result = await session.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2236, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1632, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 703, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 316, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1429, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 870, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 915, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4679, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\base.py", line 683, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 1097, in create_for_statement
+    _QueryEntity.to_compile_state(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2552, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2632, in __init__
+    entity._post_inspect
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4245, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2405, in _post_configure_properties
+    prop.init()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\interfaces.py", line 584, in init
+    self.do_init()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1644, in do_init
+    self._setup_join_conditions()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 1884, in _setup_join_conditions
+    self._join_condition = jc = JoinCondition(
+                                ^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2310, in __init__
+    self._determine_joins()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\relationships.py", line 2444, in _determine_joins
+    raise sa_exc.NoForeignKeysError(
+sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship Cart.cocktail - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2024-05-14 00:53:07,540 - INFO - Update id=28633567 is handled. Duration 186 ms by bot id=7153324522
+2024-05-14 00:53:08,836 - INFO - Update id=28633568 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:53:09,531 - INFO - Update id=28633569 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:53:10,533 - INFO - Update id=28633570 is not handled. Duration 14 ms by bot id=7153324522
+2024-05-14 00:53:11,554 - INFO - Update id=28633571 is handled. Duration 94 ms by bot id=7153324522
+2024-05-14 00:53:15,423 - INFO - Update id=28633572 is handled. Duration 344 ms by bot id=7153324522
+2024-05-14 00:53:17,930 - INFO - Update id=28633573 is handled. Duration 61 ms by bot id=7153324522
+2024-05-14 00:53:19,451 - INFO - BEGIN (implicit)
+2024-05-14 00:53:19,452 - INFO - ROLLBACK
+2024-05-14 00:53:19,452 - INFO - Update id=28633574 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:53:19,453 - ERROR - Cause exception while process update id=28633574 by bot id=7153324522
+InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Cart(cart)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Cart.cocktail - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 61, in starring_at_product
+    for cocktail in await repository_get_all_cocktails(session):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\repository\repo_cockt.py", line 23, in repository_get_all_cocktails
+    result = await session.execute(query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 461, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 190, in greenlet_spawn
+    result = context.switch(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2236, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1632, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 703, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 316, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 1429, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 870, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 915, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\visitors.py", line 141, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\compiler.py", line 4679, in visit_select
+    compile_state = select_stmt._compile_state_factory(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\sql\base.py", line 683, in create_for_statement
+    return klass.create_for_statement(statement, compiler, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 1097, in create_for_statement
+    _QueryEntity.to_compile_state(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2552, in to_compile_state
+    _MapperEntity(
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 2632, in __init__
+    entity._post_inspect
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1253, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2711, in _post_inspect
+    self._check_configure()
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4204, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4241, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Cart(cart)]'. Original exception was: Could not determine join condition between parent/child tables on relationship Cart.cocktail - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2024-05-14 00:53:22,697 - INFO - Update id=28633575 is handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:53:23,868 - INFO - Update id=28633576 is handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:53:24,420 - INFO - Update id=28633577 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:53:26,341 - INFO - Update id=28633578 is handled. Duration 61 ms by bot id=7153324522
+2024-05-14 00:57:33,289 - INFO - Polling stopped
+2024-05-14 00:57:33,551 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:57:56,228 - DEBUG - Using proactor: IocpProactor
+2024-05-14 00:57:56,501 - INFO - Start polling
+2024-05-14 00:57:56,557 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:58:09,354 - INFO - Update id=28633579 is handled. Duration 172 ms by bot id=7153324522
+2024-05-14 00:58:20,029 - INFO - Update id=28633580 is handled. Duration 63 ms by bot id=7153324522
+2024-05-14 00:58:21,412 - INFO - Update id=28633581 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:58:22,838 - INFO - Update id=28633582 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:58:23,515 - INFO - Update id=28633583 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 00:58:24,098 - INFO - Update id=28633584 is handled. Duration 141 ms by bot id=7153324522
+2024-05-14 00:58:24,456 - INFO - Update id=28633585 is handled. Duration 155 ms by bot id=7153324522
+2024-05-14 00:58:27,783 - INFO - Update id=28633586 is handled. Duration 61 ms by bot id=7153324522
+2024-05-14 00:58:29,374 - INFO - Update id=28633587 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 00:58:30,046 - INFO - Update id=28633588 is handled. Duration 94 ms by bot id=7153324522
+2024-05-14 00:58:30,413 - INFO - Update id=28633589 is handled. Duration 61 ms by bot id=7153324522
+2024-05-14 00:58:30,759 - INFO - Update id=28633590 is handled. Duration 61 ms by bot id=7153324522
+2024-05-14 00:58:34,195 - INFO - Update id=28633591 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:59:06,888 - INFO - Polling stopped
+2024-05-14 00:59:07,150 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:59:13,210 - DEBUG - Using proactor: IocpProactor
+2024-05-14 00:59:13,459 - INFO - Start polling
+2024-05-14 00:59:13,518 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 00:59:31,629 - INFO - Update id=28633592 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:59:32,624 - INFO - Update id=28633593 is handled. Duration 186 ms by bot id=7153324522
+2024-05-14 00:59:33,442 - INFO - Update id=28633594 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:59:34,739 - INFO - Update id=28633595 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 00:59:36,321 - INFO - Update id=28633596 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 01:00:01,921 - INFO - Polling stopped
+2024-05-14 01:00:02,191 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'

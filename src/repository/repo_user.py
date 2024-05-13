@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.database.models import User
 
 
-async def orm_add_user(
+async def repository_add_user(
     session: AsyncSession,
     user_id: int,
     first_name: str | None = None,
