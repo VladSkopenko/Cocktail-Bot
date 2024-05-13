@@ -16,7 +16,7 @@ from src.common.patterns_for_command import PAYMENT
 from src.common.patterns_for_command import REVIEWS
 from src.filters.chat_types import ChatTypeFilter
 from src.key_bords.reply import get_keyboard
-from src.repository.crud import repository_get_all_cocktails
+from src.repository.repo_cockt import repository_get_all_cocktails
 
 user_private_router = Router()
 user_private_router.message.filter(ChatTypeFilter(["private"]))

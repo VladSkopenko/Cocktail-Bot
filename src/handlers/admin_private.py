@@ -15,11 +15,11 @@ from src.filters.chat_types import IsAdmin
 from src.key_bords.inline import get_callback_btns
 from src.key_bords.reply import get_keyboard
 from src.loger.loger import logging
-from src.repository.crud import repository_add_cocktail
-from src.repository.crud import repository_delete_cocktail_by_id
-from src.repository.crud import repository_get_all_cocktails
-from src.repository.crud import repository_get_cocktail
-from src.repository.crud import repository_update_cocktail
+from src.repository.repo_cockt import repository_add_cocktail
+from src.repository.repo_cockt import repository_delete_cocktail_by_id
+from src.repository.repo_cockt import repository_get_all_cocktails
+from src.repository.repo_cockt import repository_get_cocktail
+from src.repository.repo_cockt import repository_update_cocktail
 
 admin_router = Router()
 admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
