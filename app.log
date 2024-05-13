@@ -1086,3 +1086,186 @@ FROM cocktails
 2024-05-13 16:17:15,444 - INFO - Update id=28633486 is handled. Duration 202 ms by bot id=7153324522
 2024-05-13 16:17:21,047 - INFO - Polling stopped
 2024-05-13 16:17:21,302 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-13 16:29:45,637 - DEBUG - Using proactor: IocpProactor
+2024-05-13 16:29:45,918 - INFO - Start polling
+2024-05-13 16:29:45,977 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-13 16:29:48,039 - INFO - Update id=28633487 is handled. Duration 500 ms by bot id=7153324522
+2024-05-13 16:29:51,948 - INFO - select pg_catalog.version()
+2024-05-13 16:29:51,948 - INFO - [raw sql] ()
+2024-05-13 16:29:51,951 - INFO - select current_schema()
+2024-05-13 16:29:51,951 - INFO - [raw sql] ()
+2024-05-13 16:29:51,953 - INFO - show standard_conforming_strings
+2024-05-13 16:29:51,954 - INFO - [raw sql] ()
+2024-05-13 16:29:51,956 - INFO - BEGIN (implicit)
+2024-05-13 16:29:51,962 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:29:51,963 - INFO - [generated in 0.00124s] ()
+2024-05-13 16:29:52,615 - INFO - ROLLBACK
+2024-05-13 16:29:52,616 - INFO - Update id=28633488 is handled. Duration 766 ms by bot id=7153324522
+2024-05-13 16:32:09,647 - INFO - Update id=28633489 is handled. Duration 281 ms by bot id=7153324522
+2024-05-13 16:32:11,040 - INFO - BEGIN (implicit)
+2024-05-13 16:32:11,041 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:32:11,041 - INFO - [cached since 139.1s ago] ()
+2024-05-13 16:32:11,747 - INFO - ROLLBACK
+2024-05-13 16:32:11,748 - INFO - Update id=28633490 is handled. Duration 703 ms by bot id=7153324522
+2024-05-13 16:32:14,901 - INFO - BEGIN (implicit)
+2024-05-13 16:32:14,903 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-13 16:32:14,904 - INFO - [generated in 0.00050s] (8,)
+2024-05-13 16:32:15,060 - INFO - ROLLBACK
+2024-05-13 16:32:15,061 - INFO - Update id=28633491 is handled. Duration 156 ms by bot id=7153324522
+2024-05-13 16:32:23,271 - INFO - Update id=28633492 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:32:24,427 - INFO - Update id=28633493 is handled. Duration 125 ms by bot id=7153324522
+2024-05-13 16:32:26,438 - INFO - Update id=28633494 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:32:39,877 - INFO - BEGIN (implicit)
+2024-05-13 16:32:39,879 - INFO - UPDATE cocktails SET name=$1::VARCHAR, description=$2::VARCHAR, image=$3::VARCHAR, price=$4::FLOAT, updated_at=now() WHERE cocktails.id = $5::INTEGER
+2024-05-13 16:32:39,879 - INFO - [generated in 0.00049s] ('Negroni', 'Міцний, гіркий.На основі джину, кампарі та солодкого вермуту.', 'AgACAgIAAxkBAAII2GZCFnZZp7cEtI6PFUBNsYMtBzlFAAK22zEbuakRSu6MdldTUv2zAQADAgADeQADNQQ', 300.0, 8)
+2024-05-13 16:32:39,884 - INFO - COMMIT
+2024-05-13 16:32:39,988 - INFO - Update id=28633495 is handled. Duration 110 ms by bot id=7153324522
+2024-05-13 16:32:41,416 - INFO - BEGIN (implicit)
+2024-05-13 16:32:41,417 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:32:41,417 - INFO - [cached since 169.5s ago] ()
+2024-05-13 16:32:42,032 - INFO - ROLLBACK
+2024-05-13 16:32:42,034 - INFO - Update id=28633496 is handled. Duration 625 ms by bot id=7153324522
+2024-05-13 16:32:45,896 - INFO - BEGIN (implicit)
+2024-05-13 16:32:45,896 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-13 16:32:45,897 - INFO - [cached since 30.99s ago] (4,)
+2024-05-13 16:32:46,033 - INFO - ROLLBACK
+2024-05-13 16:32:46,035 - INFO - Update id=28633497 is handled. Duration 139 ms by bot id=7153324522
+2024-05-13 16:32:51,673 - INFO - Update id=28633498 is handled. Duration 203 ms by bot id=7153324522
+2024-05-13 16:32:52,524 - INFO - Update id=28633499 is handled. Duration 188 ms by bot id=7153324522
+2024-05-13 16:32:53,364 - INFO - Update id=28633500 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:33:00,034 - INFO - BEGIN (implicit)
+2024-05-13 16:33:00,035 - INFO - UPDATE cocktails SET name=$1::VARCHAR, description=$2::VARCHAR, image=$3::VARCHAR, price=$4::FLOAT, updated_at=now() WHERE cocktails.id = $5::INTEGER
+2024-05-13 16:33:00,035 - INFO - [cached since 20.16s ago] ('Aperol Spritz', 'Легкий, солодкий.На основі апельсинового лікеру та ігристого вина.', 'AgACAgIAAxkBAAII6GZCForlqx8mbNSDRwS82ZCuTxlYAAK32zEbuakRStYedIXdzsl3AQADAgADeQADNQQ', 235.0, 4)
+2024-05-13 16:33:00,038 - INFO - COMMIT
+2024-05-13 16:33:00,137 - INFO - Update id=28633501 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:33:01,710 - INFO - BEGIN (implicit)
+2024-05-13 16:33:01,711 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:33:01,711 - INFO - [cached since 189.7s ago] ()
+2024-05-13 16:33:02,218 - INFO - ROLLBACK
+2024-05-13 16:33:02,219 - INFO - Update id=28633502 is handled. Duration 516 ms by bot id=7153324522
+2024-05-13 16:38:55,893 - INFO - BEGIN (implicit)
+2024-05-13 16:38:55,894 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-13 16:38:55,894 - INFO - [cached since 401s ago] (7,)
+2024-05-13 16:38:56,288 - INFO - ROLLBACK
+2024-05-13 16:38:56,289 - INFO - Update id=28633503 is handled. Duration 389 ms by bot id=7153324522
+2024-05-13 16:39:00,328 - INFO - Update id=28633504 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:39:01,132 - INFO - Update id=28633505 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:39:02,087 - INFO - Update id=28633506 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:39:20,388 - INFO - BEGIN (implicit)
+2024-05-13 16:39:20,389 - INFO - UPDATE cocktails SET name=$1::VARCHAR, description=$2::VARCHAR, image=$3::VARCHAR, price=$4::FLOAT, updated_at=now() WHERE cocktails.id = $5::INTEGER
+2024-05-13 16:39:20,389 - INFO - [cached since 400.5s ago] ('Daiquiri', 'Strong, sweet and sour, based on rum.', 'AgACAgIAAxkBAAII-GZCGAaVDPfq_A37P7KP-Uh_hflaAALF2zEbuakRSjTwqOMdFkLPAQADAgADeQADNQQ', 230.0, 7)
+2024-05-13 16:39:20,391 - INFO - COMMIT
+2024-05-13 16:39:20,593 - INFO - Update id=28633507 is handled. Duration 218 ms by bot id=7153324522
+2024-05-13 16:39:21,729 - INFO - BEGIN (implicit)
+2024-05-13 16:39:21,729 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:39:21,730 - INFO - [cached since 569.8s ago] ()
+2024-05-13 16:39:22,503 - INFO - ROLLBACK
+2024-05-13 16:39:22,504 - INFO - Update id=28633508 is handled. Duration 781 ms by bot id=7153324522
+2024-05-13 16:39:29,855 - INFO - BEGIN (implicit)
+2024-05-13 16:39:29,855 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-13 16:39:29,856 - INFO - [cached since 435s ago] (3,)
+2024-05-13 16:39:30,196 - INFO - ROLLBACK
+2024-05-13 16:39:30,197 - INFO - Update id=28633509 is handled. Duration 343 ms by bot id=7153324522
+2024-05-13 16:39:34,261 - INFO - Update id=28633510 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:39:35,805 - INFO - Update id=28633511 is handled. Duration 250 ms by bot id=7153324522
+2024-05-13 16:39:37,453 - INFO - Update id=28633512 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:39:43,039 - INFO - BEGIN (implicit)
+2024-05-13 16:39:43,040 - INFO - UPDATE cocktails SET name=$1::VARCHAR, description=$2::VARCHAR, image=$3::VARCHAR, price=$4::FLOAT, updated_at=now() WHERE cocktails.id = $5::INTEGER
+2024-05-13 16:39:43,040 - INFO - [cached since 423.2s ago] ('Dry Martini', 'Міцний , сухий. На основі джину і сухого вермуту.', 'AgACAgIAAxkBAAIJCGZCGB061BTpqnaq0aXRqHGkp48xAALG2zEbuakRSi_AgoTqUWGHAQADAgADeQADNQQ', 300.0, 3)
+2024-05-13 16:39:43,043 - INFO - COMMIT
+2024-05-13 16:39:43,150 - INFO - Update id=28633513 is handled. Duration 110 ms by bot id=7153324522
+2024-05-13 16:39:44,864 - INFO - BEGIN (implicit)
+2024-05-13 16:39:44,865 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:39:44,865 - INFO - [cached since 592.9s ago] ()
+2024-05-13 16:39:45,612 - INFO - ROLLBACK
+2024-05-13 16:39:45,614 - INFO - Update id=28633514 is handled. Duration 750 ms by bot id=7153324522
+2024-05-13 16:39:57,675 - INFO - BEGIN (implicit)
+2024-05-13 16:39:57,676 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-13 16:39:57,676 - INFO - [cached since 462.8s ago] (2,)
+2024-05-13 16:39:57,957 - INFO - ROLLBACK
+2024-05-13 16:39:57,958 - INFO - Update id=28633515 is handled. Duration 280 ms by bot id=7153324522
+2024-05-13 16:40:02,508 - INFO - Update id=28633516 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:40:03,372 - INFO - Update id=28633517 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:40:07,246 - INFO - Update id=28633518 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:40:12,774 - INFO - BEGIN (implicit)
+2024-05-13 16:40:12,774 - INFO - UPDATE cocktails SET name=$1::VARCHAR, description=$2::VARCHAR, image=$3::VARCHAR, price=$4::FLOAT, updated_at=now() WHERE cocktails.id = $5::INTEGER
+2024-05-13 16:40:12,775 - INFO - [cached since 452.9s ago] ('White Lady', 'Міцний, кисло-солодкий.На основі джину з додаванням лимонного фрешу та куантро', 'AgACAgIAAxkBAAIJGGZCGDrdatOhXX-08KwfxhnBnPFHAALH2zEbuakRSpL9xKBWTxrlAQADAgADeQADNQQ', 250.0, 2)
+2024-05-13 16:40:12,778 - INFO - COMMIT
+2024-05-13 16:40:12,966 - INFO - Update id=28633519 is handled. Duration 186 ms by bot id=7153324522
+2024-05-13 16:40:14,199 - INFO - BEGIN (implicit)
+2024-05-13 16:40:14,200 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:40:14,200 - INFO - [cached since 622.2s ago] ()
+2024-05-13 16:40:14,730 - INFO - ROLLBACK
+2024-05-13 16:40:14,731 - INFO - Update id=28633520 is handled. Duration 531 ms by bot id=7153324522
+2024-05-13 16:43:14,324 - INFO - Update id=28633521 is handled. Duration 187 ms by bot id=7153324522
+2024-05-13 16:43:16,054 - INFO - Update id=28633522 is handled. Duration 78 ms by bot id=7153324522
+2024-05-13 16:43:20,610 - INFO - Update id=28633523 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:43:33,551 - INFO - Update id=28633524 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:43:43,850 - INFO - BEGIN (implicit)
+2024-05-13 16:43:43,851 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:43:43,851 - INFO - [cached since 831.9s ago] ()
+2024-05-13 16:43:45,498 - INFO - ROLLBACK
+2024-05-13 16:43:45,500 - INFO - Update id=28633525 is handled. Duration 1656 ms by bot id=7153324522
+2024-05-13 16:44:15,789 - INFO - Update id=28633526 is handled. Duration 264 ms by bot id=7153324522
+2024-05-13 16:44:17,971 - INFO - Update id=28633527 is handled. Duration 108 ms by bot id=7153324522
+2024-05-13 16:44:19,999 - INFO - Update id=28633528 is handled. Duration 233 ms by bot id=7153324522
+2024-05-13 16:44:23,174 - INFO - Update id=28633529 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:44:24,815 - INFO - Update id=28633530 is handled. Duration 110 ms by bot id=7153324522
+2024-05-13 16:44:26,315 - INFO - Update id=28633531 is handled. Duration 125 ms by bot id=7153324522
+2024-05-13 16:44:32,002 - INFO - Update id=28633532 is handled. Duration 108 ms by bot id=7153324522
+2024-05-13 16:44:38,060 - INFO - Update id=28633533 is handled. Duration 109 ms by bot id=7153324522
+2024-05-13 16:44:40,714 - INFO - BEGIN (implicit)
+2024-05-13 16:44:40,715 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:44:40,715 - INFO - [cached since 888.8s ago] ()
+2024-05-13 16:44:41,477 - INFO - ROLLBACK
+2024-05-13 16:44:41,479 - INFO - Update id=28633534 is handled. Duration 766 ms by bot id=7153324522
+2024-05-13 16:44:43,913 - INFO - BEGIN (implicit)
+2024-05-13 16:44:43,914 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:44:43,915 - INFO - [cached since 892s ago] ()
+2024-05-13 16:44:44,760 - INFO - ROLLBACK
+2024-05-13 16:44:44,762 - INFO - Update id=28633535 is handled. Duration 843 ms by bot id=7153324522
+2024-05-13 16:45:03,607 - INFO - Update id=28633536 is handled. Duration 421 ms by bot id=7153324522
+2024-05-13 16:45:16,146 - INFO - Update id=28633537 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:45:17,450 - INFO - Update id=28633538 is handled. Duration 125 ms by bot id=7153324522
+2024-05-13 16:45:19,729 - INFO - Update id=28633539 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-13 16:45:25,666 - INFO - Update id=28633540 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:45:31,382 - INFO - Update id=28633541 is handled. Duration 139 ms by bot id=7153324522
+2024-05-13 16:45:33,249 - INFO - Update id=28633542 is handled. Duration 156 ms by bot id=7153324522
+2024-05-13 16:45:34,957 - INFO - Update id=28633543 is handled. Duration 233 ms by bot id=7153324522
+2024-05-13 16:46:29,411 - INFO - Update id=28633544 is handled. Duration 171 ms by bot id=7153324522
+2024-05-13 16:46:30,394 - INFO - Update id=28633545 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:46:32,413 - INFO - Update id=28633546 is handled. Duration 139 ms by bot id=7153324522
+2024-05-13 16:46:34,346 - INFO - Update id=28633547 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:46:43,068 - INFO - Update id=28633548 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:46:45,178 - INFO - Update id=28633549 is handled. Duration 78 ms by bot id=7153324522
+2024-05-13 16:46:47,842 - INFO - Update id=28633550 is handled. Duration 61 ms by bot id=7153324522
+2024-05-13 16:46:53,155 - ERROR - could not convert string to float: 'вартиысть'
+2024-05-13 16:46:53,155 - INFO - Update id=28633551 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:47:08,852 - INFO - BEGIN (implicit)
+2024-05-13 16:47:08,853 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:47:08,853 - INFO - [cached since 1037s ago] ()
+2024-05-13 16:47:09,669 - INFO - ROLLBACK
+2024-05-13 16:47:09,670 - INFO - Update id=28633552 is handled. Duration 812 ms by bot id=7153324522
+2024-05-13 16:48:05,161 - INFO - Polling stopped
+2024-05-13 16:48:05,420 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
