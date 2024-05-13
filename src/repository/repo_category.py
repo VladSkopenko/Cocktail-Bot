@@ -1,17 +1,17 @@
-from sqlalchemy import select
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database.models import Category
 
 
-async def orm_get_categories(session: AsyncSession):
+async def repository_get_categories(session: AsyncSession):
     query = select(Category)
     result = await session.execute(query)
     return result.scalars().all()
 
 
-async def orm_create_categories(session: AsyncSession, categories: list):
+async def repository_create_categories(session: AsyncSession, categories: list):
     query = select(Category)
     result = await session.execute(query)
     if result.first():
