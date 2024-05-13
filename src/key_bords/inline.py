@@ -147,7 +147,7 @@ def get_user_cart(
     level: int,
     page: int | None,
     pagination_btns: dict | None,
-    product_id: int | None,
+    cocktail_id: int | None,
     sizes: tuple[int] = (3,)
 ):
     keyboard = InlineKeyboardBuilder()
@@ -156,7 +156,7 @@ def get_user_cart(
             InlineKeyboardButton(
                 text="видалити",
                 callback_data=MenuCallBack(
-                    level=level, menu_name="delete", product_id=product_id, page=page
+                    level=level, menu_name="delete", cocktail_id=cocktail_id, page=page
                 ).pack(),
             )
         )
@@ -164,7 +164,7 @@ def get_user_cart(
             InlineKeyboardButton(
                 text="-1",
                 callback_data=MenuCallBack(
-                    level=level, menu_name="decrement", product_id=product_id, page=page
+                    level=level, menu_name="decrement", product_id=cocktail_id, page=page
                 ).pack(),
             )
         )
@@ -172,7 +172,7 @@ def get_user_cart(
             InlineKeyboardButton(
                 text="+1",
                 callback_data=MenuCallBack(
-                    level=level, menu_name="increment", product_id=product_id, page=page
+                    level=level, menu_name="increment", product_id=cocktail_id, page=page
                 ).pack(),
             )
         )

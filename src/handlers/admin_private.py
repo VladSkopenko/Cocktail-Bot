@@ -1,4 +1,5 @@
 from aiogram import F
+from aiogram import Router
 from aiogram import types
 from aiogram.filters import Command
 from aiogram.filters import or_f
@@ -8,16 +9,107 @@ from aiogram.fsm.state import State
 from aiogram.fsm.state import StatesGroup
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.handlers.admin.admin_private import admin_router
+from src.common.patterns_for_command import ADMIN
+from src.filters.chat_types import ChatTypeFilter
+from src.filters.chat_types import IsAdmin
 from src.key_bords.admin_key_board import admin_key_board
 from src.key_bords.inline import get_callback_btns
 from src.loger.loger import logging
+from src.repository.repo_banner import repository_change_banner_image
+from src.repository.repo_banner import repository_get_info_pages
 from src.repository.repo_category import repository_get_categories
 from src.repository.repo_cockt import repository_add_cocktail
+from src.repository.repo_cockt import repository_delete_cocktail_by_id
 from src.repository.repo_cockt import repository_get_cocktail
 from src.repository.repo_cockt import repository_update_cocktail
 
+admin_router = Router()
+admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
 
+
+@admin_router.message(F.text.lower().regexp(ADMIN))
+@admin_router.message(Command("admin"))
+async def start_work(message: types.Message):
+    await message.answer("Що бажаєте зробити?", reply_markup=admin_key_board)
+
+
+@admin_router.message(F.text == "Асортимент")
+async def admin_features(message: types.Message, session: AsyncSession):
+    categories = await repository_get_categories(session)
+    btns = {category.name: f"category_{category.id}" for category in categories}
+    await message.answer("Оберіть категорію", reply_markup=get_callback_btns(btns=btns))
+
+
+@admin_router.callback_query(F.data.startswith("category_"))
+async def starring_at_product(callback: types.CallbackQuery, session: AsyncSession):
+    category_id = callback.data.split("_")[-1]
+    category_id = int(category_id)
+    for cocktail in await repository_get_cocktail(session, category_id):
+        await callback.message.answer_photo(
+            cocktail.image,
+            caption=f"<strong>{cocktail.name}\
+                    </strong>\n{cocktail.description}\nСтоимость: {round(cocktail.price, 2)}",
+            reply_markup=get_callback_btns(
+                btns={
+                    "Видалити": f"delete_{cocktail.id}",
+                    "Змінити": f"change_{cocktail.id}",
+                },
+                sizes=(2,),
+            ),
+        )
+    await callback.answer()
+    await callback.message.answer("ОК, ось список коктейлів в асортименті ⏫")
+
+
+@admin_router.callback_query(F.data.startswith("delete_"))
+async def delete_cocktail(callback: types.CallbackQuery, session: AsyncSession):
+    cocktail_id = int(callback.data.split("_")[-1])
+    await repository_delete_cocktail_by_id(session, cocktail_id)
+    await callback.answer("Коктейль видалено!⏫")
+    await callback.message.answer("Коктейль видалено!⏫")
+
+
+# ------------------------------------------------------------------Банери FSM
+class AddBanner(StatesGroup):
+    image = State()
+
+
+@admin_router.message(StateFilter(None), F.text == "Добавить/Изменить баннер")
+async def add_image2(message: types.Message, state: FSMContext, session: AsyncSession):
+    pages_names = [page.name for page in await repository_get_info_pages(session)]
+    await message.answer(
+        f"Отправьте фото баннера.\nВ описании укажите для какой страницы:\
+                         \n{', '.join(pages_names)}"
+    )
+    await state.set_state(AddBanner.image)
+
+
+@admin_router.message(AddBanner.image, F.photo)
+async def add_banner(message: types.Message, state: FSMContext, session: AsyncSession):
+    image_id = message.photo[-1].file_id
+    for_page = message.caption.strip()
+    pages_names = [page.name for page in await repository_get_info_pages(session)]
+    if for_page not in pages_names:
+        await message.answer(
+            f"Введите нормальное название страницы, например:\
+                         \n{', '.join(pages_names)}"
+        )
+        return
+    await repository_change_banner_image(
+        session,
+        for_page,
+        image_id,
+    )
+    await message.answer("Баннер добавлен/изменен.")
+    await state.clear()
+
+
+@admin_router.message(AddBanner.image)
+async def add_banner2(message: types.Message, state: FSMContext):
+    await message.answer("Отправьте фото баннера или отмена")
+
+
+# ------------------------------------------------------------------ FSM для коктов
 class AddCocktail(StatesGroup):
     name = State()
     description = State()
@@ -30,6 +122,7 @@ class AddCocktail(StatesGroup):
     texts = {
         "AddCocktail:name": "Введіть назву знову",
         "AddCocktail:description": "Введіть опис знову",
+        "AddProduct:category": "Оберіть категорію  знову ⬆️",
         "AddCocktail:price": "Введіть ціну знову",
         "AddCocktail:image": "Завантажте нове фото",
     }

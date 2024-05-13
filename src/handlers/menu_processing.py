@@ -1,133 +1,128 @@
 from aiogram.types import InputMediaPhoto
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database.orm_query import (
-    orm_add_to_cart,
-    orm_delete_from_cart,
-    orm_get_banner,
-    orm_get_categories,
-    orm_get_products,
-    orm_get_user_carts,
-    orm_reduce_product_in_cart,
-)
-from kbds.inline import (
-    get_products_btns,
-    get_user_cart,
-    get_user_catalog_btns,
-    get_user_main_btns,
-)
-
-from utils.paginator import Paginator
+from src.key_bords.inline import get_products_btns
+from src.key_bords.inline import get_user_cart
+from src.key_bords.inline import get_user_catalog_btns
+from src.key_bords.inline import get_user_main_btns
+from src.repository.repo_banner import repository_get_banner
+from src.repository.repo_cart import repository_add_to_cart
+from src.repository.repo_cart import repository_delete_from_cart
+from src.repository.repo_cart import repository_get_user_carts
+from src.repository.repo_cart import repository_reduce_product_in_cart
+from src.repository.repo_category import repository_get_categories
+from src.repository.repo_cockt import repository_get_all_cocktails
+from src.utils.paginator import Paginator
 
 
 async def main_menu(session, level, menu_name):
-    banner = await orm_get_banner(session, menu_name)
+    banner = await repository_get_banner(session, menu_name)
     image = InputMediaPhoto(media=banner.image, caption=banner.description)
 
-    kbds = get_user_main_btns(level=level)
+    key_boards = get_user_main_btns(level=level)
 
-    return image, kbds
+    return image, key_boards
 
 
 async def catalog(session, level, menu_name):
-    banner = await orm_get_banner(session, menu_name)
+    banner = await repository_get_banner(session, menu_name)
     image = InputMediaPhoto(media=banner.image, caption=banner.description)
 
-    categories = await orm_get_categories(session)
-    kbds = get_user_catalog_btns(level=level, categories=categories)
+    categories = await repository_get_categories(session)
+    key_boards = get_user_catalog_btns(level=level, categories=categories)
 
-    return image, kbds
+    return image, key_boards
 
 
 def pages(paginator: Paginator):
-    btns = dict()
+    buttons = dict()
     if paginator.has_previous():
-        btns["◀ Пред."] = "previous"
+        buttons["◀ Пред."] = "previous"
 
     if paginator.has_next():
-        btns["След. ▶"] = "next"
+        buttons["След. ▶"] = "next"
 
-    return btns
+    return buttons
 
 
-async def products(session, level, category, page):
-    products = await orm_get_products(session, category_id=category)
+async def cocktails(session, level, category, page):
+    cocktails_list = await repository_get_all_cocktails(session, category_id=category)
 
-    paginator = Paginator(products, page=page)
-    product = paginator.get_page()[0]
+    paginator = Paginator(cocktails_list, page=page)
+    cocktail = paginator.get_page()[0]
 
     image = InputMediaPhoto(
-        media=product.image,
-        caption=f"<strong>{product.name}\
-                </strong>\n{product.description}\nСтоимость: {round(product.price, 2)}\n\
-                <strong>Товар {paginator.page} из {paginator.pages}</strong>",
+        media=cocktail.image,
+        caption=f"<strong>{cocktail.name}\
+                </strong>\n{cocktail.description}\nВартість: {round(cocktail.price, 2)}\n\
+                <strong>Коктейль {paginator.page} из {paginator.pages}</strong>",
     )
 
-    pagination_btns = pages(paginator)
+    pagination_buttons = pages(paginator)
 
-    kbds = get_products_btns(
+    buttons = get_products_btns(
         level=level,
         category=category,
         page=page,
-        pagination_btns=pagination_btns,
-        product_id=product.id,
+        pagination_btns=pagination_buttons,
+        product_id=cocktail.id,
     )
 
-    return image, kbds
+    return image, buttons
 
 
-async def carts(session, level, menu_name, page, user_id, product_id):
+async def carts(session, level, menu_name, page, user_id, cocktail_id):
     if menu_name == "delete":
-        await orm_delete_from_cart(session, user_id, product_id)
+        await repository_delete_from_cart(session, user_id, cocktail_id)
         if page > 1:
             page -= 1
     elif menu_name == "decrement":
-        is_cart = await orm_reduce_product_in_cart(session, user_id, product_id)
+        is_cart = await repository_reduce_product_in_cart(session, user_id, cocktail_id)
         if page > 1 and not is_cart:
             page -= 1
     elif menu_name == "increment":
-        await orm_add_to_cart(session, user_id, product_id)
+        await repository_add_to_cart(session, user_id, cocktail_id)
 
-    carts = await orm_get_user_carts(session, user_id)
+    carts_list = await repository_get_user_carts(session, user_id)
 
-    if not carts:
-        banner = await orm_get_banner(session, "cart")
+    if not carts_list:
+        banner = await repository_get_banner(session, "cart")
         image = InputMediaPhoto(
             media=banner.image, caption=f"<strong>{banner.description}</strong>"
         )
 
-        kbds = get_user_cart(
+        key_boards = get_user_cart(
             level=level,
             page=None,
             pagination_btns=None,
-            product_id=None,
+            cocktail_id=None,
         )
 
     else:
-        paginator = Paginator(carts, page=page)
+        paginator = Paginator(carts_list, page=page)
 
         cart = paginator.get_page()[0]
 
-        cart_price = round(cart.quantity * cart.product.price, 2)
+        cart_price = round(cart.quantity * cart.cocktail.price, 2)
         total_price = round(
-            sum(cart.quantity * cart.product.price for cart in carts), 2
+            sum(cart.quantity * cart.cocktail.price for cart in carts_list), 2
         )
         image = InputMediaPhoto(
-            media=cart.product.image,
-            caption=f"<strong>{cart.product.name}</strong>\n{cart.product.price}$ x {cart.quantity} = {cart_price}$\
-                    \nТовар {paginator.page} из {paginator.pages} в корзине.\nОбщая стоимость товаров в корзине {total_price}",
+            media=cart.cocktail.image,
+            caption=f"<strong>{cart.cocktail.name}</strong>\n{cart.cocktail.price}$ x {cart.quantity} = {cart_price}$\
+                    \nТовар {paginator.page} из {paginator.pages} в корзині.\nЗагальна вартість замовлення: {total_price}",
         )
 
-        pagination_btns = pages(paginator)
+        pagination_buttons = pages(paginator)
 
-        kbds = get_user_cart(
+        key_boards = get_user_cart(
             level=level,
             page=page,
-            pagination_btns=pagination_btns,
-            product_id=cart.product.id,
+            pagination_btns=pagination_buttons,
+            cocktail_id=cart.cocktail.id,
         )
 
-    return image, kbds
+    return image, key_boards
 
 
 async def get_menu_content(
@@ -136,7 +131,7 @@ async def get_menu_content(
     menu_name: str,
     category: int | None = None,
     page: int | None = None,
-    product_id: int | None = None,
+    cocktail_id: int | None = None,
     user_id: int | None = None,
 ):
     if level == 0:
@@ -144,6 +139,6 @@ async def get_menu_content(
     elif level == 1:
         return await catalog(session, level, menu_name)
     elif level == 2:
-        return await products(session, level, category, page)
+        return await cocktails(session, level, category, page)
     elif level == 3:
-        return await carts(session, level, menu_name, page, user_id, product_id)
+        return await carts(session, level, menu_name, page, user_id, cocktail_id)
