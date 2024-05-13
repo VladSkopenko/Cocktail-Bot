@@ -36,8 +36,13 @@ async def start_work(message: types.Message):
 @admin_router.message(F.text == "Асортимент")
 async def admin_features(message: types.Message, session: AsyncSession):
     categories = await repository_get_categories(session)
-    btns = {category.name: f"category_{category.id}" for category in categories}
-    await message.answer("Оберіть категорію", reply_markup=get_callback_btns(btns=btns))
+    buttons = {category.name: f"category_{category.id}" for category in categories}
+    await message.answer(
+        "Оберіть категорію", reply_markup=get_callback_btns(btns=buttons)
+    )
+
+
+#
 
 
 @admin_router.callback_query(F.data.startswith("category_"))
@@ -74,11 +79,11 @@ class AddBanner(StatesGroup):
     image = State()
 
 
-@admin_router.message(StateFilter(None), F.text == "Добавить/Изменить баннер")
-async def add_image2(message: types.Message, state: FSMContext, session: AsyncSession):
+@admin_router.message(StateFilter(None), F.text == "Додати/Змінити баннер")
+async def add_banner_(message: types.Message, state: FSMContext, session: AsyncSession):
     pages_names = [page.name for page in await repository_get_info_pages(session)]
     await message.answer(
-        f"Отправьте фото баннера.\nВ описании укажите для какой страницы:\
+        f"Відправте фото баннеру.\nВ описі укажіть для якої сторінки:\
                          \n{', '.join(pages_names)}"
     )
     await state.set_state(AddBanner.image)
@@ -91,7 +96,7 @@ async def add_banner(message: types.Message, state: FSMContext, session: AsyncSe
     pages_names = [page.name for page in await repository_get_info_pages(session)]
     if for_page not in pages_names:
         await message.answer(
-            f"Введите нормальное название страницы, например:\
+            f"Введіть  нормальну назву сторінки, наприклад:\
                          \n{', '.join(pages_names)}"
         )
         return
@@ -100,13 +105,13 @@ async def add_banner(message: types.Message, state: FSMContext, session: AsyncSe
         for_page,
         image_id,
     )
-    await message.answer("Баннер добавлен/изменен.")
+    await message.answer("Банер додано/змінено.")
     await state.clear()
 
 
 @admin_router.message(AddBanner.image)
 async def add_banner2(message: types.Message, state: FSMContext):
-    await message.answer("Отправьте фото баннера или отмена")
+    await message.answer("Відправте фото банеру або відміна")
 
 
 # ------------------------------------------------------------------ FSM для коктов
