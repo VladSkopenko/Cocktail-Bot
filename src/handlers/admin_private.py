@@ -118,6 +118,8 @@ async def cancel_handler(message: types.Message, state: FSMContext) -> None:
     current_state = await state.get_state()
     if not current_state:
         return
+    if AddCocktail.cocktail_for_change:
+        AddCocktail.cocktail_for_change = None
     await state.clear()
     await message.answer("Все скинуто", reply_markup=admin_key_board)
 

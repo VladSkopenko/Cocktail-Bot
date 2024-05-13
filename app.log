@@ -939,3 +939,150 @@ FROM cocktails
 2024-05-13 01:27:11,307 - INFO - Update id=28633447 is handled. Duration 328 ms by bot id=7153324522
 2024-05-13 01:27:20,508 - INFO - Polling stopped
 2024-05-13 01:27:20,772 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-13 16:09:39,494 - DEBUG - Using proactor: IocpProactor
+2024-05-13 16:09:40,052 - INFO - Start polling
+2024-05-13 16:09:40,101 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-13 16:09:44,894 - INFO - Update id=28633450 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-13 16:09:44,894 - ERROR - Cause exception while process update id=28633450 by bot id=7153324522
+AttributeError: 'NoneType' object has no attribute 'translate'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_group.py", line 34, in cleaner_text
+    if forbidden_words.intersection(clean_text(message.text).lower().split()):
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\utils\clean_text.py", line 5, in clean_text
+    return text.translate(str.maketrans("", "", punctuation))
+           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'translate'
+2024-05-13 16:09:46,755 - INFO - Update id=28633451 is handled. Duration 343 ms by bot id=7153324522
+2024-05-13 16:09:50,431 - INFO - Update id=28633452 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:10:15,582 - INFO - Update id=28633453 is handled. Duration 217 ms by bot id=7153324522
+2024-05-13 16:10:17,061 - INFO - select pg_catalog.version()
+2024-05-13 16:10:17,062 - INFO - [raw sql] ()
+2024-05-13 16:10:17,065 - INFO - select current_schema()
+2024-05-13 16:10:17,065 - INFO - [raw sql] ()
+2024-05-13 16:10:17,068 - INFO - show standard_conforming_strings
+2024-05-13 16:10:17,069 - INFO - [raw sql] ()
+2024-05-13 16:10:17,071 - INFO - BEGIN (implicit)
+2024-05-13 16:10:17,077 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:10:17,078 - INFO - [generated in 0.00053s] ()
+2024-05-13 16:10:17,669 - INFO - ROLLBACK
+2024-05-13 16:10:17,671 - INFO - Update id=28633454 is handled. Duration 750 ms by bot id=7153324522
+2024-05-13 16:10:32,380 - INFO - Update id=28633455 is handled. Duration 0 ms by bot id=7153324522
+2024-05-13 16:10:34,101 - INFO - BEGIN (implicit)
+2024-05-13 16:10:34,102 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:10:34,102 - INFO - [cached since 17.02s ago] ()
+2024-05-13 16:10:34,611 - INFO - ROLLBACK
+2024-05-13 16:10:34,612 - INFO - Update id=28633456 is handled. Duration 516 ms by bot id=7153324522
+2024-05-13 16:10:37,179 - INFO - Update id=28633457 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:10:39,785 - INFO - Update id=28633458 is handled. Duration 406 ms by bot id=7153324522
+2024-05-13 16:10:44,345 - INFO - Update id=28633459 is handled. Duration 77 ms by bot id=7153324522
+2024-05-13 16:10:47,837 - INFO - Update id=28633460 is handled. Duration 250 ms by bot id=7153324522
+2024-05-13 16:10:54,585 - INFO - Update id=28633461 is handled. Duration 171 ms by bot id=7153324522
+2024-05-13 16:10:57,161 - INFO - Update id=28633462 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:10:59,413 - INFO - Update id=28633463 is handled. Duration 139 ms by bot id=7153324522
+2024-05-13 16:11:37,466 - INFO - Update id=28633464 is handled. Duration 280 ms by bot id=7153324522
+2024-05-13 16:12:06,746 - INFO - Update id=28633465 is handled. Duration 235 ms by bot id=7153324522
+2024-05-13 16:12:10,379 - INFO - Update id=28633466 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:12:48,280 - INFO - BEGIN (implicit)
+2024-05-13 16:12:48,282 - INFO - INSERT INTO cocktails (name, description, image, price, author, alcohol_level, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::FLOAT, $5::VARCHAR, $6::alcohol, now(), now()) RETURNING cocktails.id, cocktails.created_at, cocktails.updated_at
+2024-05-13 16:12:48,283 - INFO - [generated in 0.00054s] ('Daiquiri', 'Strong, sweet and sour, based on rum.', 'AgACAgIAAxkBAAIIiGZCEc4S8q_uaKiv_ZKi93wRjG-ZAAKY2zEbuakRSpbu7qZKsiQwAQADAgADeQADNQQ', 230.0, None, None)
+2024-05-13 16:12:48,286 - INFO - COMMIT
+2024-05-13 16:12:48,567 - INFO - Update id=28633467 is handled. Duration 296 ms by bot id=7153324522
+2024-05-13 16:12:50,106 - INFO - BEGIN (implicit)
+2024-05-13 16:12:50,106 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:12:50,106 - INFO - [cached since 153s ago] ()
+2024-05-13 16:12:51,066 - INFO - ROLLBACK
+2024-05-13 16:12:51,068 - INFO - Update id=28633468 is handled. Duration 968 ms by bot id=7153324522
+2024-05-13 16:13:47,041 - INFO - Update id=28633469 is handled. Duration 203 ms by bot id=7153324522
+2024-05-13 16:13:53,996 - INFO - Update id=28633470 is handled. Duration 125 ms by bot id=7153324522
+2024-05-13 16:14:30,279 - INFO - Update id=28633471 is handled. Duration 188 ms by bot id=7153324522
+2024-05-13 16:14:32,769 - INFO - Update id=28633472 is handled. Duration 156 ms by bot id=7153324522
+2024-05-13 16:14:38,258 - INFO - BEGIN (implicit)
+2024-05-13 16:14:38,259 - INFO - INSERT INTO cocktails (name, description, image, price, author, alcohol_level, created_at, updated_at) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, $4::FLOAT, $5::VARCHAR, $6::alcohol, now(), now()) RETURNING cocktails.id, cocktails.created_at, cocktails.updated_at
+2024-05-13 16:14:38,259 - INFO - [cached since 110s ago] ('Negroni', 'Міцний, гіркий.На основі джину, кампарі та солодкого вермуту.', 'AgACAgIAAxkBAAIImGZCEjyWegUHg_QQFS75G7kacirIAAKa2zEbuakRSlOeU1moQMBiAQADAgADbQADNQQ', 300.0, None, None)
+2024-05-13 16:14:38,262 - INFO - COMMIT
+2024-05-13 16:14:38,422 - INFO - Update id=28633473 is handled. Duration 172 ms by bot id=7153324522
+2024-05-13 16:14:40,438 - INFO - BEGIN (implicit)
+2024-05-13 16:14:40,439 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:14:40,439 - INFO - [cached since 263.4s ago] ()
+2024-05-13 16:14:41,003 - INFO - ROLLBACK
+2024-05-13 16:14:41,005 - INFO - Update id=28633474 is handled. Duration 577 ms by bot id=7153324522
+2024-05-13 16:14:54,266 - INFO - Update id=28633475 is handled. Duration 16 ms by bot id=7153324522
+2024-05-13 16:14:55,076 - INFO - Update id=28633476 is handled. Duration 0 ms by bot id=7153324522
+2024-05-13 16:14:58,889 - INFO - Update id=28633477 is handled. Duration 187 ms by bot id=7153324522
+2024-05-13 16:15:01,393 - INFO - Update id=28633478 is handled. Duration 78 ms by bot id=7153324522
+2024-05-13 16:15:02,608 - INFO - Update id=28633479 is handled. Duration 110 ms by bot id=7153324522
+2024-05-13 16:15:03,260 - INFO - Update id=28633480 is handled. Duration 125 ms by bot id=7153324522
+2024-05-13 16:15:03,893 - INFO - Update id=28633481 is handled. Duration 141 ms by bot id=7153324522
+2024-05-13 16:15:04,360 - INFO - Update id=28633482 is handled. Duration 93 ms by bot id=7153324522
+2024-05-13 16:15:04,812 - INFO - BEGIN (implicit)
+2024-05-13 16:15:04,812 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:15:04,813 - INFO - [cached since 287.7s ago] ()
+2024-05-13 16:15:06,444 - INFO - ROLLBACK
+2024-05-13 16:15:06,447 - INFO - Update id=28633483 is handled. Duration 1640 ms by bot id=7153324522
+2024-05-13 16:15:28,525 - INFO - Update id=28633484 is handled. Duration 266 ms by bot id=7153324522
+2024-05-13 16:15:36,784 - INFO - BEGIN (implicit)
+2024-05-13 16:15:36,785 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.alcohol_level, cocktails.created_at, cocktails.updated_at 
+FROM cocktails
+2024-05-13 16:15:36,785 - INFO - [cached since 319.7s ago] ()
+2024-05-13 16:15:37,350 - INFO - ROLLBACK
+2024-05-13 16:15:37,351 - INFO - Update id=28633485 is handled. Duration 562 ms by bot id=7153324522
+2024-05-13 16:17:15,444 - INFO - Update id=28633486 is handled. Duration 202 ms by bot id=7153324522
+2024-05-13 16:17:21,047 - INFO - Polling stopped
+2024-05-13 16:17:21,302 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
