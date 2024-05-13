@@ -15,9 +15,9 @@ from src.filters.chat_types import IsAdmin
 from src.key_bords.inline import get_callback_btns
 from src.key_bords.reply import get_keyboard
 from src.loger.loger import logging
+from src.repository.repo_category import repository_get_categories
 from src.repository.repo_cockt import repository_add_cocktail
 from src.repository.repo_cockt import repository_delete_cocktail_by_id
-from src.repository.repo_cockt import repository_get_all_cocktails
 from src.repository.repo_cockt import repository_get_cocktail
 from src.repository.repo_cockt import repository_update_cocktail
 
@@ -27,8 +27,7 @@ admin_router.message.filter(ChatTypeFilter(["private"]), IsAdmin())
 admin_key_board = get_keyboard(
     "Додати коктейль",
     "Асортимент",
-    "Назад",
-    "Скидання",
+    "Додати/Змінити баннер",
     placeholder="Оберіть дію",
     sizes=(2,),
 )
@@ -39,6 +38,7 @@ class AddCocktail(StatesGroup):
     description = State()
     price = State()
     image = State()
+    category = State()
 
     cocktail_for_change = None
 
@@ -57,21 +57,33 @@ async def start_work(message: types.Message):
 
 
 @admin_router.message(F.text == "Асортимент")
-async def starring_at_product(message: types.Message, session: AsyncSession):
-    for cocktail in await repository_get_all_cocktails(session):
-        await message.answer_photo(
+async def admin_features(message: types.Message, session: AsyncSession):
+    categories = await repository_get_categories(session)
+    btns = {category.name: f"category_{category.id}" for category in categories}
+    await message.answer(
+        "Оберіть категорію", reply_markup=get_callback_btns(btns=btns)
+    )
+
+
+@admin_router.callback_query(F.data.startswith("category_"))
+async def starring_at_product(callback: types.CallbackQuery, session: AsyncSession):
+    category_id = callback.data.split("_")[-1]
+    category_id = int(category_id)
+    for cocktail in await repository_get_cocktail(session, category_id):
+        await callback.message.answer_photo(
             cocktail.image,
-            f"{cocktail.name}\n"
-            f"Опис: {cocktail.description}\n"
-            f"Вартість: {round(cocktail.price, 2)}",
+            caption=f"<strong>{cocktail.name}\
+                    </strong>\n{cocktail.description}\nСтоимость: {round(cocktail.price, 2)}",
             reply_markup=get_callback_btns(
                 btns={
                     "Видалити": f"delete_{cocktail.id}",
-                    "Редагувати": f"change_{cocktail.id}",
-                }
+                    "Змінити": f"change_{cocktail.id}",
+                },
+                sizes=(2,),
             ),
         )
-    await message.answer("ОК, ось список коктейлів в асортименті⏫")
+    await callback.answer()
+    await callback.message.answer("ОК, ось список коктейлів в асортименті ⏫")
 
 
 @admin_router.callback_query(F.data.startswith("delete_"))
@@ -185,7 +197,9 @@ async def add_image(message: types.Message, state: FSMContext, session: AsyncSes
     data = await state.get_data()
     try:
         if AddCocktail.cocktail_for_change:
-            await repository_update_cocktail(session, AddCocktail.cocktail_for_change.id, data)
+            await repository_update_cocktail(
+                session, AddCocktail.cocktail_for_change.id, data
+            )
         else:
             await repository_add_cocktail(session, data)
         await message.answer("Операція успішна", reply_markup=admin_key_board)
