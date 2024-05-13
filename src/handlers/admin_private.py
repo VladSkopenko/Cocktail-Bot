@@ -60,9 +60,7 @@ async def start_work(message: types.Message):
 async def admin_features(message: types.Message, session: AsyncSession):
     categories = await repository_get_categories(session)
     btns = {category.name: f"category_{category.id}" for category in categories}
-    await message.answer(
-        "Оберіть категорію", reply_markup=get_callback_btns(btns=btns)
-    )
+    await message.answer("Оберіть категорію", reply_markup=get_callback_btns(btns=btns))
 
 
 @admin_router.callback_query(F.data.startswith("category_"))
@@ -159,7 +157,7 @@ async def back_step_handler(message: types.Message, state: FSMContext) -> None:
 
 @admin_router.message(StateFilter(AddCocktail.name), or_f(F.text, F.text == "-"))
 async def add_name(message: types.Message, state: FSMContext):
-    if message.text == "-":
+    if message.text == "-" and AddCocktail.cocktail_for_change:
         await state.update_data(name=AddCocktail.cocktail_for_change.name)
     else:
         await state.update_data(name=message.text)
@@ -168,18 +166,41 @@ async def add_name(message: types.Message, state: FSMContext):
 
 
 @admin_router.message(StateFilter(AddCocktail.description), or_f(F.text, F.text == "-"))
-async def add_description(message: types.Message, state: FSMContext):
-    if message.text == "-":
+async def add_description(
+    message: types.Message, state: FSMContext, session: AsyncSession
+):
+    if message.text == "-" and AddCocktail.cocktail_for_change:
         await state.update_data(description=AddCocktail.cocktail_for_change.description)
     else:
         await state.update_data(description=message.text)
-    await message.answer("Введіть вартість коктейлю")
-    await state.set_state(AddCocktail.price)
+    categories = await repository_get_categories(session)
+    buttons = {category.name: str(category.id) for category in categories}
+    await message.answer(
+        "Оберіть категорію, щоб додати продук",
+        reply_markup=get_callback_btns(btns=buttons),
+    )
+    await state.set_state(AddCocktail.category)
+
+
+@admin_router.callback_query(AddCocktail.category)
+async def category_choice(
+    callback: types.CallbackQuery, state: FSMContext, session: AsyncSession
+):
+    if int(callback.data) in [
+        category.id for category in await repository_get_categories(session)
+    ]:
+        await callback.answer()
+        await state.update_data(category=callback.data)
+        await callback.message.answer("Введіть вартість коктейлю")
+        await state.set_state(AddCocktail.price)
+    else:
+        await callback.message.answer("Оберіть категорію ")
+        await callback.answer()
 
 
 @admin_router.message(StateFilter(AddCocktail.price), or_f(F.text, F.text == "-"))
 async def add_price(message: types.Message, state: FSMContext):
-    if message.text == "-":
+    if message.text == "-" and AddCocktail.cocktail_for_change:
         await state.update_data(price=AddCocktail.cocktail_for_change.price)
     else:
         await state.update_data(price=message.text)
@@ -189,7 +210,7 @@ async def add_price(message: types.Message, state: FSMContext):
 
 @admin_router.message(StateFilter(AddCocktail.image), or_f(F.photo, F.text == "-"))
 async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
-    if message.text and message.text == "-":
+    if message.text == "-" and AddCocktail.cocktail_for_change:
         await state.update_data(image=AddCocktail.cocktail_for_change.image)
 
     else:

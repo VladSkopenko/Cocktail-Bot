@@ -2,7 +2,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 import asyncio
 
 from src.common.text_for_db import categories as bd_categories
-from src.database.connect import engine
 from src.database.connect import session_maker
 from src.database.models import Category
 
