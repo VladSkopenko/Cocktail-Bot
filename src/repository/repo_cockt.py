@@ -2,7 +2,6 @@ from sqlalchemy import select
 from sqlalchemy import update
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import load_only
 
 from src.database.models import Cocktail
 
