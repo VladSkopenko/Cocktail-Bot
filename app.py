@@ -5,12 +5,13 @@ from aiogram import Bot
 from aiogram import Dispatcher
 from aiogram.client.bot import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.types import BotCommandScopeAllPrivateChats
+#from aiogram import types
+
 from dotenv import load_dotenv
 
-from src.common.bot_command_list import private
+#from src.common.bot_command_list import private
 from src.database.connect import session_maker
-from src.handlers.admin_private import admin_router
+from src.handlers.admin.admin_private import admin_router
 from src.handlers.non_text import non_text_router
 from src.handlers.user_group import user_group_router
 from src.handlers.user_private import user_private_router
@@ -32,9 +33,9 @@ dp.include_router(non_text_router)
 
 async def main():
     dp.update.middleware(DataBaseSession(session_pool=session_maker))
-    # await bot.delete_my_commands(scope=types.BotCommandScopeAllPrivateChats())
+    #await bot.delete_my_commands(scope=types.BotCommandScopeAllPrivateChats())
     await bot.delete_webhook(drop_pending_updates=True)
-    await bot.set_my_commands(commands=private, scope=BotCommandScopeAllPrivateChats())
+    #await bot.set_my_commands(commands=private, scope=BotCommandScopeAllPrivateChats())
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
 
