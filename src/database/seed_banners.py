@@ -1,5 +1,5 @@
 from src.database.connect import session_maker
-from src.repository.repo_banner import repository_add_banner_description
+from src.repository.banner import repository_add_banner_description
 from src.common.text_for_db import description_for_info_pages
 import asyncio
 

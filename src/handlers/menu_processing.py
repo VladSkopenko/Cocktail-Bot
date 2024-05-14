@@ -5,13 +5,13 @@ from src.key_bords.inline import get_products_btns
 from src.key_bords.inline import get_user_cart
 from src.key_bords.inline import get_user_catalog_btns
 from src.key_bords.inline import get_user_main_btns
-from src.repository.repo_banner import repository_get_banner
-from src.repository.repo_cart import repository_add_to_cart
-from src.repository.repo_cart import repository_delete_from_cart
-from src.repository.repo_cart import repository_get_user_carts
-from src.repository.repo_cart import repository_reduce_product_in_cart
-from src.repository.repo_category import repository_get_categories
-from src.repository.repo_cockt import repository_get_all_cocktails
+from src.repository.banner import repository_get_banner
+from src.repository.cart import repository_add_to_cart
+from src.repository.cart import repository_delete_from_cart
+from src.repository.cart import repository_get_user_carts
+from src.repository.cart import repository_reduce_product_in_cart
+from src.repository.category import repository_get_categories
+from src.repository.cocktail import repository_get_all_cocktails
 from src.utils.paginator import Paginator
 
 

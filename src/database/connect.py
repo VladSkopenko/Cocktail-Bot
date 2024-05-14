@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 from src.database.models import Base
 from src.common.text_for_db import categories, description_for_info_pages
-from src.repository.repo_banner import repository_add_banner_description
-from src.repository.repo_category import repository_create_categories
+from src.repository.banner import repository_add_banner_description
+from src.repository.category import repository_create_categories
 
 db_url = "postgresql+asyncpg://postgres:postgres@localhost:5432/postgres"
 engine = create_async_engine(db_url, echo=True)

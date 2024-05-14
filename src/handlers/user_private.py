@@ -6,8 +6,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.filters.chat_types import ChatTypeFilter
 from src.handlers.menu_processing import get_menu_content
 from src.key_bords.inline import MenuCallBack
-from src.repository.repo_cart import repository_add_to_cart
-from src.repository.repo_user import repository_add_user
+from src.repository.cart import repository_add_to_cart
+from src.repository.users import repository_add_user
 
 user_private_router = Router()
 user_private_router.message.filter(ChatTypeFilter(["private"]))
