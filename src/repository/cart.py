@@ -20,7 +20,7 @@ async def repository_add_to_cart(session: AsyncSession, user_id: int, cocktail_i
         return cart
     else:
         session.add(Cart(user_id=user_id, cocktail_id=cocktail_id, quantity=1))
-        await session.commit()
+    await session.commit()
 
 
 async def repository_get_user_carts(session: AsyncSession, user_id):

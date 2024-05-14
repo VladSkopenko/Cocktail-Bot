@@ -36,6 +36,7 @@ async def add_to_cart(
     await repository_add_to_cart(
         session, user_id=user.id, cocktail_id=callback_data.cocktail_id
     )
+
     await callback.answer("Коктейль додано в корзину.")
 
 
