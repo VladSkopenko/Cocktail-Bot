@@ -224,10 +224,10 @@ def get_user_cart(
         return keyboard.adjust(*sizes).as_markup()
 
 
-def get_callback_buttons(*, btns: dict[str, str], sizes: tuple[int] = (2,)):
+def get_callback_buttons(*, buttons: dict[str, str], sizes: tuple[int] = (2,)):
     keyboard = InlineKeyboardBuilder()
 
-    for text, data in btns.items():
+    for text, data in buttons.items():
         keyboard.add(InlineKeyboardButton(text=text, callback_data=data))
 
     return keyboard.adjust(*sizes).as_markup()
