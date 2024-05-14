@@ -1,10 +1,10 @@
 from aiogram.types import InputMediaPhoto
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.key_bords.inline import get_products_btns
+from src.key_bords.inline import get_products_buttons
 from src.key_bords.inline import get_user_cart
-from src.key_bords.inline import get_user_catalog_btns
-from src.key_bords.inline import get_user_main_btns
+from src.key_bords.inline import get_user_catalog_buttons
+from src.key_bords.inline import get_user_main_buttons
 from src.repository.banner import repository_get_banner
 from src.repository.cart import repository_add_to_cart
 from src.repository.cart import repository_delete_from_cart
@@ -19,7 +19,7 @@ async def main_menu(session, level, menu_name):
     banner = await repository_get_banner(session, menu_name)
     image = InputMediaPhoto(media=banner.image, caption=banner.description)
 
-    key_boards = get_user_main_btns(level=level)
+    key_boards = get_user_main_buttons(level=level)
 
     return image, key_boards
 
@@ -29,7 +29,7 @@ async def catalog(session, level, menu_name):
     image = InputMediaPhoto(media=banner.image, caption=banner.description)
 
     categories = await repository_get_categories(session)
-    key_boards = get_user_catalog_btns(level=level, categories=categories)
+    key_boards = get_user_catalog_buttons(level=level, categories=categories)
 
     return image, key_boards
 
@@ -60,12 +60,12 @@ async def cocktails(session, level, category, page):
 
     pagination_buttons = pages(paginator)
 
-    buttons = get_products_btns(
+    buttons = get_products_buttons(
         level=level,
         category=category,
         page=page,
-        pagination_btns=pagination_buttons,
-        product_id=cocktail.id,
+        pagination_buttons=pagination_buttons,
+        cocktail_id=cocktail.id,
     )
 
     return image, buttons
@@ -94,7 +94,7 @@ async def carts(session, level, menu_name, page, user_id, cocktail_id):
         key_boards = get_user_cart(
             level=level,
             page=None,
-            pagination_btns=None,
+            pagination_buttons=None,
             cocktail_id=None,
         )
 
@@ -118,7 +118,7 @@ async def carts(session, level, menu_name, page, user_id, cocktail_id):
         key_boards = get_user_cart(
             level=level,
             page=page,
-            pagination_btns=pagination_buttons,
+            pagination_buttons=pagination_buttons,
             cocktail_id=cart.cocktail.id,
         )
 

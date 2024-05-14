@@ -13,7 +13,7 @@ from src.common.patterns_for_command import ADMIN
 from src.filters.chat_types import ChatTypeFilter
 from src.filters.chat_types import IsAdmin
 from src.key_bords.admin_key_board import admin_key_board
-from src.key_bords.inline import get_callback_btns
+from src.key_bords.inline import get_callback_buttons
 from src.loger.loger import logging
 from src.repository.banner import repository_change_banner_image
 from src.repository.banner import repository_get_info_pages

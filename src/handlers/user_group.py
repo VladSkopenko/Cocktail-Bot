@@ -5,6 +5,7 @@ from src.common.forbidden_words import forbidden_words
 from src.filters.chat_types import ChatTypeFilter
 from src.utils.clean_text import clean_text
 from aiogram import F, Bot, types, Router
+
 user_group_router = Router()
 user_group_router.message.filter(ChatTypeFilter(["group", "supergroup"]))
 
@@ -22,10 +23,6 @@ async def get_admins(message: types.Message, bot: Bot):
     bot.my_admins_list = admins_list
     if message.from_user.id in admins_list:
         await message.delete()
-
-
-
-
 
 
 @user_group_router.edited_message()

@@ -8,19 +8,19 @@ class MenuCallBack(CallbackData, prefix="menu"):
     menu_name: str
     category: int | None = None
     page: int = 1
-    product_id: int | None = None
+    cocktail_id: int | None = None
 
 
-def get_user_main_btns(*, level: int, sizes: tuple[int] = (2,)):
+def get_user_main_buttons(*, level: int, sizes: tuple[int] = (2,)):
     keyboard = InlineKeyboardBuilder()
-    btns = {
+    buttons = {
         "Коктейлі 🍕": "catalog",
         "Корзина 🛒": "cart",
         "Про бота ℹ️": "about",
         "Оплата 💰": "payment",
         "Доставка ⛵": "shipping",
     }
-    for text, menu_name in btns.items():
+    for text, menu_name in buttons.items():
         if menu_name == "catalog":
             keyboard.add(
                 InlineKeyboardButton(
@@ -48,7 +48,7 @@ def get_user_main_btns(*, level: int, sizes: tuple[int] = (2,)):
     return keyboard.adjust(*sizes).as_markup()
 
 
-def get_user_catalog_btns(*, level: int, categories: list, sizes: tuple[int] = (2,)):
+def get_user_catalog_buttons(*, level: int, categories: list, sizes: tuple[int] = (2,)):
     keyboard = InlineKeyboardBuilder()
 
     keyboard.add(
@@ -77,13 +77,13 @@ def get_user_catalog_btns(*, level: int, categories: list, sizes: tuple[int] = (
     return keyboard.adjust(*sizes).as_markup()
 
 
-def get_products_btns(
+def get_products_buttons(
     *,
     level: int,
     category: int,
     page: int,
-    pagination_btns: dict,
-    product_id: int,
+    pagination_buttons: dict,
+    cocktail_id: int,
     sizes: tuple[int] = (2, 1)
 ):
     keyboard = InlineKeyboardBuilder()
@@ -104,7 +104,7 @@ def get_products_btns(
         InlineKeyboardButton(
             text="Купити 💵",
             callback_data=MenuCallBack(
-                level=level, menu_name="add_to_cart", product_id=product_id
+                level=level, menu_name="add_to_cart", product_id=cocktail_id
             ).pack(),
         )
     )
@@ -112,7 +112,7 @@ def get_products_btns(
     keyboard.adjust(*sizes)
 
     row = []
-    for text, menu_name in pagination_btns.items():
+    for text, menu_name in pagination_buttons.items():
         if menu_name == "next":
             row.append(
                 InlineKeyboardButton(
@@ -146,7 +146,7 @@ def get_user_cart(
     *,
     level: int,
     page: int | None,
-    pagination_btns: dict | None,
+    pagination_buttons: dict | None,
     cocktail_id: int | None,
     sizes: tuple[int] = (3,)
 ):
@@ -164,7 +164,7 @@ def get_user_cart(
             InlineKeyboardButton(
                 text="-1",
                 callback_data=MenuCallBack(
-                    level=level, menu_name="decrement", product_id=cocktail_id, page=page
+                    level=level, menu_name="decrement", cocktail_id=cocktail_id, page=page
                 ).pack(),
             )
         )
@@ -172,7 +172,7 @@ def get_user_cart(
             InlineKeyboardButton(
                 text="+1",
                 callback_data=MenuCallBack(
-                    level=level, menu_name="increment", product_id=cocktail_id, page=page
+                    level=level, menu_name="increment", cocktail_id=cocktail_id, page=page
                 ).pack(),
             )
         )
@@ -180,7 +180,7 @@ def get_user_cart(
         keyboard.adjust(*sizes)
 
         row = []
-        for text, menu_name in pagination_btns.items():
+        for text, menu_name in pagination_buttons.items():
             if menu_name == "next":
                 row.append(
                     InlineKeyboardButton(
@@ -224,7 +224,7 @@ def get_user_cart(
         return keyboard.adjust(*sizes).as_markup()
 
 
-def get_callback_btns(*, btns: dict[str, str], sizes: tuple[int] = (2,)):
+def get_callback_buttons(*, btns: dict[str, str], sizes: tuple[int] = (2,)):
     keyboard = InlineKeyboardBuilder()
 
     for text, data in btns.items():
