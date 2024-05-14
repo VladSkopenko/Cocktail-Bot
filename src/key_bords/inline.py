@@ -77,7 +77,7 @@ def get_user_catalog_buttons(*, level: int, categories: list, sizes: tuple[int] 
     return keyboard.adjust(*sizes).as_markup()
 
 
-def get_products_buttons(
+def get_cocktails_buttons(
     *,
     level: int,
     category: int,
@@ -104,7 +104,7 @@ def get_products_buttons(
         InlineKeyboardButton(
             text="Купити 💵",
             callback_data=MenuCallBack(
-                level=level, menu_name="add_to_cart", product_id=cocktail_id
+                level=level, menu_name="add_to_cart", cocktail_id=cocktail_id
             ).pack(),
         )
     )

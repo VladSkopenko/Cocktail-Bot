@@ -8196,3 +8196,719 @@ WHERE cocktails.category_id = $1::INTEGER
 2024-05-14 04:47:04,081 - INFO - ROLLBACK
 2024-05-14 04:47:04,083 - INFO - Update id=28633996 is handled. Duration 139 ms by bot id=7153324522
 2024-05-14 04:47:18,855 - INFO - Polling stopped
+2024-05-14 05:01:15,519 - DEBUG - Using proactor: IocpProactor
+2024-05-14 05:01:15,677 - INFO - Start polling
+2024-05-14 05:01:19,729 - INFO - select pg_catalog.version()
+2024-05-14 05:01:19,729 - INFO - [raw sql] ()
+2024-05-14 05:01:19,732 - INFO - select current_schema()
+2024-05-14 05:01:19,732 - INFO - [raw sql] ()
+2024-05-14 05:01:19,735 - INFO - show standard_conforming_strings
+2024-05-14 05:01:19,735 - INFO - [raw sql] ()
+2024-05-14 05:01:19,737 - INFO - BEGIN (implicit)
+2024-05-14 05:01:19,747 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:19,748 - INFO - [generated in 0.00055s] ('main',)
+2024-05-14 05:01:19,932 - INFO - ROLLBACK
+2024-05-14 05:01:19,934 - INFO - Update id=28634000 is handled. Duration 296 ms by bot id=7153324522
+2024-05-14 05:01:21,027 - INFO - BEGIN (implicit)
+2024-05-14 05:01:21,028 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:21,028 - INFO - [cached since 1.281s ago] ('catalog',)
+2024-05-14 05:01:21,032 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:01:21,032 - INFO - [generated in 0.00046s] ()
+2024-05-14 05:01:21,203 - INFO - ROLLBACK
+2024-05-14 05:01:21,205 - INFO - Update id=28634001 is handled. Duration 171 ms by bot id=7153324522
+2024-05-14 05:01:23,630 - INFO - BEGIN (implicit)
+2024-05-14 05:01:23,631 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:01:23,632 - INFO - [generated in 0.00066s] (1,)
+2024-05-14 05:01:23,758 - INFO - ROLLBACK
+2024-05-14 05:01:23,760 - INFO - Update id=28634002 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:01:25,005 - INFO - BEGIN (implicit)
+2024-05-14 05:01:25,006 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:25,007 - INFO - [cached since 5.26s ago] ('catalog',)
+2024-05-14 05:01:25,009 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:01:25,010 - INFO - [cached since 3.979s ago] ()
+2024-05-14 05:01:25,135 - INFO - ROLLBACK
+2024-05-14 05:01:25,137 - INFO - Update id=28634003 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:01:26,318 - INFO - BEGIN (implicit)
+2024-05-14 05:01:26,321 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:01:26,322 - INFO - [generated in 0.00080s] (1194508435,)
+2024-05-14 05:01:26,328 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:26,328 - INFO - [cached since 6.581s ago] ('cart',)
+2024-05-14 05:01:26,457 - INFO - ROLLBACK
+2024-05-14 05:01:26,458 - INFO - Update id=28634004 is handled. Duration 139 ms by bot id=7153324522
+2024-05-14 05:01:27,623 - INFO - BEGIN (implicit)
+2024-05-14 05:01:27,624 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:27,624 - INFO - [cached since 7.878s ago] ('main',)
+2024-05-14 05:01:27,760 - INFO - ROLLBACK
+2024-05-14 05:01:27,761 - INFO - Update id=28634005 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:01:29,589 - INFO - BEGIN (implicit)
+2024-05-14 05:01:29,589 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:29,589 - INFO - [cached since 9.843s ago] ('catalog',)
+2024-05-14 05:01:29,592 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:01:29,592 - INFO - [cached since 8.561s ago] ()
+2024-05-14 05:01:29,755 - INFO - ROLLBACK
+2024-05-14 05:01:29,757 - INFO - Update id=28634006 is handled. Duration 156 ms by bot id=7153324522
+2024-05-14 05:01:30,476 - INFO - BEGIN (implicit)
+2024-05-14 05:01:30,476 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:01:30,477 - INFO - [cached since 6.846s ago] (1,)
+2024-05-14 05:01:30,597 - INFO - ROLLBACK
+2024-05-14 05:01:30,599 - INFO - Update id=28634007 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:01:32,625 - INFO - BEGIN (implicit)
+2024-05-14 05:01:32,625 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:01:32,626 - INFO - [cached since 6.304s ago] (1194508435,)
+2024-05-14 05:01:32,629 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:32,629 - INFO - [cached since 12.88s ago] ('cart',)
+2024-05-14 05:01:32,765 - INFO - ROLLBACK
+2024-05-14 05:01:32,766 - INFO - Update id=28634008 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:01:33,446 - INFO - BEGIN (implicit)
+2024-05-14 05:01:33,446 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:33,447 - INFO - [cached since 13.7s ago] ('main',)
+2024-05-14 05:01:33,571 - INFO - ROLLBACK
+2024-05-14 05:01:33,573 - INFO - Update id=28634009 is handled. Duration 139 ms by bot id=7153324522
+2024-05-14 05:01:50,830 - INFO - Update id=28634010 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 05:01:51,865 - INFO - Update id=28634011 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 05:01:52,275 - INFO - Update id=28634012 is not handled. Duration 14 ms by bot id=7153324522
+2024-05-14 05:01:55,385 - INFO - BEGIN (implicit)
+2024-05-14 05:01:55,385 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:01:55,386 - INFO - [cached since 35.64s ago] ('catalog',)
+2024-05-14 05:01:55,388 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:01:55,389 - INFO - [cached since 34.36s ago] ()
+2024-05-14 05:01:55,878 - INFO - ROLLBACK
+2024-05-14 05:01:55,880 - INFO - Update id=28634013 is handled. Duration 500 ms by bot id=7153324522
+2024-05-14 05:01:57,412 - INFO - BEGIN (implicit)
+2024-05-14 05:01:57,413 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:01:57,414 - INFO - [cached since 33.78s ago] (1,)
+2024-05-14 05:01:57,554 - INFO - ROLLBACK
+2024-05-14 05:01:57,556 - INFO - Update id=28634014 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:02:04,004 - INFO - BEGIN (implicit)
+2024-05-14 05:02:04,004 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:02:04,004 - INFO - [cached since 44.26s ago] ('main',)
+2024-05-14 05:02:04,074 - INFO - ROLLBACK
+2024-05-14 05:02:04,075 - INFO - Update id=28634015 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 05:02:06,152 - INFO - BEGIN (implicit)
+2024-05-14 05:02:06,153 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:02:06,154 - INFO - [cached since 46.41s ago] ('catalog',)
+2024-05-14 05:02:06,157 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:02:06,158 - INFO - [cached since 45.13s ago] ()
+2024-05-14 05:02:06,292 - INFO - ROLLBACK
+2024-05-14 05:02:06,294 - INFO - Update id=28634016 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:02:08,209 - INFO - BEGIN (implicit)
+2024-05-14 05:02:08,211 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:02:08,211 - INFO - [cached since 44.58s ago] (1,)
+2024-05-14 05:02:08,340 - INFO - ROLLBACK
+2024-05-14 05:02:08,342 - INFO - Update id=28634017 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:02:11,095 - INFO - BEGIN (implicit)
+2024-05-14 05:02:11,095 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:02:11,096 - INFO - [cached since 47.46s ago] (1,)
+2024-05-14 05:02:11,224 - INFO - ROLLBACK
+2024-05-14 05:02:11,225 - INFO - Update id=28634018 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:02:13,223 - INFO - BEGIN (implicit)
+2024-05-14 05:02:13,224 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:02:13,224 - INFO - [cached since 49.59s ago] (1,)
+2024-05-14 05:02:13,361 - INFO - ROLLBACK
+2024-05-14 05:02:13,363 - INFO - Update id=28634019 is handled. Duration 139 ms by bot id=7153324522
+2024-05-14 05:02:14,477 - INFO - BEGIN (implicit)
+2024-05-14 05:02:14,478 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:02:14,479 - INFO - [cached since 48.16s ago] (1194508435,)
+2024-05-14 05:02:14,482 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:02:14,482 - INFO - [cached since 54.73s ago] ('cart',)
+2024-05-14 05:02:14,620 - INFO - ROLLBACK
+2024-05-14 05:02:14,622 - INFO - Update id=28634020 is handled. Duration 156 ms by bot id=7153324522
+2024-05-14 05:02:15,205 - INFO - BEGIN (implicit)
+2024-05-14 05:02:15,205 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:02:15,206 - INFO - [cached since 55.46s ago] ('main',)
+2024-05-14 05:02:15,333 - INFO - ROLLBACK
+2024-05-14 05:02:15,335 - INFO - Update id=28634021 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:02:16,620 - INFO - BEGIN (implicit)
+2024-05-14 05:02:16,621 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:02:16,621 - INFO - [cached since 50.3s ago] (1194508435,)
+2024-05-14 05:02:16,624 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:02:16,625 - INFO - [cached since 56.88s ago] ('cart',)
+2024-05-14 05:02:16,813 - INFO - ROLLBACK
+2024-05-14 05:02:16,814 - INFO - Update id=28634022 is handled. Duration 187 ms by bot id=7153324522
+2024-05-14 05:09:14,346 - INFO - Polling stopped
+2024-05-14 05:09:23,486 - DEBUG - Using proactor: IocpProactor
+2024-05-14 05:09:23,646 - INFO - Start polling
+2024-05-14 05:09:23,852 - INFO - select pg_catalog.version()
+2024-05-14 05:09:23,852 - INFO - [raw sql] ()
+2024-05-14 05:09:23,855 - INFO - select current_schema()
+2024-05-14 05:09:23,856 - INFO - [raw sql] ()
+2024-05-14 05:09:23,858 - INFO - show standard_conforming_strings
+2024-05-14 05:09:23,858 - INFO - [raw sql] ()
+2024-05-14 05:09:23,860 - INFO - BEGIN (implicit)
+2024-05-14 05:09:23,870 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:23,870 - INFO - [generated in 0.00056s] ('main',)
+2024-05-14 05:09:24,054 - INFO - ROLLBACK
+2024-05-14 05:09:24,056 - INFO - Update id=28634023 is handled. Duration 280 ms by bot id=7153324522
+2024-05-14 05:09:25,277 - INFO - BEGIN (implicit)
+2024-05-14 05:09:25,280 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:09:25,281 - INFO - [generated in 0.00076s] (1194508435,)
+2024-05-14 05:09:25,286 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:25,287 - INFO - [cached since 1.417s ago] ('cart',)
+2024-05-14 05:09:25,449 - INFO - ROLLBACK
+2024-05-14 05:09:25,455 - INFO - Update id=28634024 is handled. Duration 171 ms by bot id=7153324522
+2024-05-14 05:09:26,424 - INFO - BEGIN (implicit)
+2024-05-14 05:09:26,425 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:26,425 - INFO - [cached since 2.556s ago] ('main',)
+2024-05-14 05:09:26,564 - INFO - ROLLBACK
+2024-05-14 05:09:26,566 - INFO - Update id=28634025 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:09:27,463 - INFO - BEGIN (implicit)
+2024-05-14 05:09:27,463 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:27,464 - INFO - [cached since 3.594s ago] ('catalog',)
+2024-05-14 05:09:27,467 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:09:27,467 - INFO - [generated in 0.00048s] ()
+2024-05-14 05:09:27,638 - INFO - ROLLBACK
+2024-05-14 05:09:27,640 - INFO - Update id=28634026 is handled. Duration 188 ms by bot id=7153324522
+2024-05-14 05:09:28,652 - INFO - BEGIN (implicit)
+2024-05-14 05:09:28,654 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:09:28,654 - INFO - [generated in 0.00064s] (1,)
+2024-05-14 05:09:28,876 - INFO - ROLLBACK
+2024-05-14 05:09:28,877 - INFO - Update id=28634027 is handled. Duration 219 ms by bot id=7153324522
+2024-05-14 05:09:29,660 - INFO - BEGIN (implicit)
+2024-05-14 05:09:29,661 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:09:29,662 - INFO - [cached since 4.382s ago] (1194508435,)
+2024-05-14 05:09:29,665 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:29,665 - INFO - [cached since 5.796s ago] ('cart',)
+2024-05-14 05:09:30,139 - INFO - ROLLBACK
+2024-05-14 05:09:30,140 - INFO - Update id=28634028 is handled. Duration 485 ms by bot id=7153324522
+2024-05-14 05:09:30,651 - INFO - BEGIN (implicit)
+2024-05-14 05:09:30,651 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:30,652 - INFO - [cached since 6.782s ago] ('main',)
+2024-05-14 05:09:30,779 - INFO - ROLLBACK
+2024-05-14 05:09:30,781 - INFO - Update id=28634029 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:32,211 - INFO - BEGIN (implicit)
+2024-05-14 05:09:32,212 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:09:32,212 - INFO - [cached since 6.932s ago] (1194508435,)
+2024-05-14 05:09:32,216 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:32,216 - INFO - [cached since 8.346s ago] ('cart',)
+2024-05-14 05:09:32,338 - INFO - ROLLBACK
+2024-05-14 05:09:32,340 - INFO - Update id=28634030 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:09:33,057 - INFO - BEGIN (implicit)
+2024-05-14 05:09:33,058 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:33,058 - INFO - [cached since 9.188s ago] ('main',)
+2024-05-14 05:09:33,187 - INFO - ROLLBACK
+2024-05-14 05:09:33,188 - INFO - Update id=28634031 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:34,158 - INFO - BEGIN (implicit)
+2024-05-14 05:09:34,158 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:34,159 - INFO - [cached since 10.29s ago] ('catalog',)
+2024-05-14 05:09:34,162 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:09:34,162 - INFO - [cached since 6.695s ago] ()
+2024-05-14 05:09:34,291 - INFO - ROLLBACK
+2024-05-14 05:09:34,292 - INFO - Update id=28634032 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:09:35,183 - INFO - BEGIN (implicit)
+2024-05-14 05:09:35,183 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:35,184 - INFO - [cached since 11.31s ago] ('main',)
+2024-05-14 05:09:35,309 - INFO - ROLLBACK
+2024-05-14 05:09:35,310 - INFO - Update id=28634033 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:35,991 - INFO - BEGIN (implicit)
+2024-05-14 05:09:35,991 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:35,992 - INFO - [cached since 12.12s ago] ('about',)
+2024-05-14 05:09:36,116 - INFO - ROLLBACK
+2024-05-14 05:09:36,117 - INFO - Update id=28634034 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:37,686 - INFO - BEGIN (implicit)
+2024-05-14 05:09:37,686 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:37,687 - INFO - [cached since 13.82s ago] ('payment',)
+2024-05-14 05:09:37,810 - INFO - ROLLBACK
+2024-05-14 05:09:37,812 - INFO - Update id=28634035 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:39,121 - INFO - BEGIN (implicit)
+2024-05-14 05:09:39,121 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:39,122 - INFO - [cached since 15.25s ago] ('about',)
+2024-05-14 05:09:39,247 - INFO - ROLLBACK
+2024-05-14 05:09:39,248 - INFO - Update id=28634036 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:39,565 - INFO - BEGIN (implicit)
+2024-05-14 05:09:39,565 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:39,566 - INFO - [cached since 15.7s ago] ('payment',)
+2024-05-14 05:09:39,693 - INFO - ROLLBACK
+2024-05-14 05:09:39,694 - INFO - Update id=28634037 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:39,998 - INFO - BEGIN (implicit)
+2024-05-14 05:09:39,999 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:39,999 - INFO - [cached since 16.13s ago] ('about',)
+2024-05-14 05:09:40,165 - INFO - ROLLBACK
+2024-05-14 05:09:40,167 - INFO - Update id=28634038 is handled. Duration 171 ms by bot id=7153324522
+2024-05-14 05:09:41,053 - INFO - BEGIN (implicit)
+2024-05-14 05:09:41,054 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:41,054 - INFO - [cached since 17.18s ago] ('shipping',)
+2024-05-14 05:09:41,200 - INFO - ROLLBACK
+2024-05-14 05:09:41,201 - INFO - Update id=28634039 is handled. Duration 155 ms by bot id=7153324522
+2024-05-14 05:09:42,838 - INFO - BEGIN (implicit)
+2024-05-14 05:09:42,839 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:42,839 - INFO - [cached since 18.97s ago] ('catalog',)
+2024-05-14 05:09:42,842 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:09:42,843 - INFO - [cached since 15.38s ago] ()
+2024-05-14 05:09:42,966 - INFO - ROLLBACK
+2024-05-14 05:09:42,967 - INFO - Update id=28634040 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:45,374 - INFO - BEGIN (implicit)
+2024-05-14 05:09:45,374 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:09:45,375 - INFO - [cached since 20.1s ago] (1194508435,)
+2024-05-14 05:09:45,378 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:45,378 - INFO - [cached since 21.51s ago] ('cart',)
+2024-05-14 05:09:45,528 - INFO - ROLLBACK
+2024-05-14 05:09:45,529 - INFO - Update id=28634041 is handled. Duration 155 ms by bot id=7153324522
+2024-05-14 05:09:46,216 - INFO - BEGIN (implicit)
+2024-05-14 05:09:46,217 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:46,217 - INFO - [cached since 22.35s ago] ('main',)
+2024-05-14 05:09:46,343 - INFO - ROLLBACK
+2024-05-14 05:09:46,344 - INFO - Update id=28634042 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:48,065 - INFO - BEGIN (implicit)
+2024-05-14 05:09:48,066 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:09:48,066 - INFO - [cached since 24.2s ago] ('catalog',)
+2024-05-14 05:09:48,069 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:09:48,069 - INFO - [cached since 20.6s ago] ()
+2024-05-14 05:09:48,192 - INFO - ROLLBACK
+2024-05-14 05:09:48,193 - INFO - Update id=28634043 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:09:48,973 - INFO - BEGIN (implicit)
+2024-05-14 05:09:48,974 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:09:48,974 - INFO - [cached since 20.32s ago] (1,)
+2024-05-14 05:09:49,127 - INFO - ROLLBACK
+2024-05-14 05:09:49,129 - INFO - Update id=28634044 is handled. Duration 156 ms by bot id=7153324522
+2024-05-14 05:10:49,994 - INFO - Polling stopped
+2024-05-14 05:12:00,179 - DEBUG - Using proactor: IocpProactor
+2024-05-14 05:12:00,360 - INFO - Start polling
+2024-05-14 05:12:01,927 - INFO - select pg_catalog.version()
+2024-05-14 05:12:01,928 - INFO - [raw sql] ()
+2024-05-14 05:12:01,931 - INFO - select current_schema()
+2024-05-14 05:12:01,931 - INFO - [raw sql] ()
+2024-05-14 05:12:01,933 - INFO - show standard_conforming_strings
+2024-05-14 05:12:01,934 - INFO - [raw sql] ()
+2024-05-14 05:12:01,936 - INFO - BEGIN (implicit)
+2024-05-14 05:12:01,946 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:12:01,946 - INFO - [generated in 0.00055s] ('main',)
+2024-05-14 05:12:02,153 - INFO - ROLLBACK
+2024-05-14 05:12:02,155 - INFO - Update id=28634045 is handled. Duration 312 ms by bot id=7153324522
+2024-05-14 05:12:03,422 - INFO - BEGIN (implicit)
+2024-05-14 05:12:03,422 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:12:03,423 - INFO - [cached since 1.477s ago] ('catalog',)
+2024-05-14 05:12:03,426 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:12:03,426 - INFO - [generated in 0.00050s] ()
+2024-05-14 05:12:03,562 - INFO - ROLLBACK
+2024-05-14 05:12:03,564 - INFO - Update id=28634046 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:12:04,314 - INFO - BEGIN (implicit)
+2024-05-14 05:12:04,315 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:12:04,316 - INFO - [generated in 0.00067s] (1,)
+2024-05-14 05:12:04,447 - INFO - ROLLBACK
+2024-05-14 05:12:04,449 - INFO - Update id=28634047 is handled. Duration 139 ms by bot id=7153324522
+2024-05-14 05:12:05,606 - INFO - BEGIN (implicit)
+2024-05-14 05:12:05,608 - INFO - SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created_at, "user".updated_at 
+FROM "user" 
+WHERE "user".user_id = $1::BIGINT
+2024-05-14 05:12:05,608 - INFO - [generated in 0.00063s] (1194508435,)
+2024-05-14 05:12:05,616 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:05,617 - INFO - [generated in 0.00083s] (1194508435, 1)
+2024-05-14 05:12:05,622 - INFO - INSERT INTO cart (user_id, cocktail_id, quantity, created_at, updated_at) VALUES ($1::BIGINT, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created_at, cart.updated_at
+2024-05-14 05:12:05,622 - INFO - [generated in 0.00044s] (1194508435, 1, 1)
+2024-05-14 05:12:05,633 - INFO - COMMIT
+2024-05-14 05:12:05,714 - INFO - Update id=28634048 is handled. Duration 110 ms by bot id=7153324522
+2024-05-14 05:12:42,572 - INFO - BEGIN (implicit)
+2024-05-14 05:12:42,573 - INFO - SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created_at, "user".updated_at 
+FROM "user" 
+WHERE "user".user_id = $1::BIGINT
+2024-05-14 05:12:42,573 - INFO - [cached since 36.97s ago] (1194508435,)
+2024-05-14 05:12:42,575 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:42,576 - INFO - [cached since 36.96s ago] (1194508435, 1)
+2024-05-14 05:12:42,579 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:42,579 - INFO - [generated in 0.00040s] (2, 4)
+2024-05-14 05:12:42,582 - INFO - COMMIT
+2024-05-14 05:12:42,742 - INFO - Update id=28634049 is handled. Duration 170 ms by bot id=7153324522
+2024-05-14 05:12:43,267 - INFO - BEGIN (implicit)
+2024-05-14 05:12:43,270 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:43,270 - INFO - [generated in 0.00067s] (1194508435,)
+2024-05-14 05:12:43,412 - INFO - ROLLBACK
+2024-05-14 05:12:43,414 - INFO - Update id=28634050 is handled. Duration 139 ms by bot id=7153324522
+2024-05-14 05:12:45,240 - INFO - BEGIN (implicit)
+2024-05-14 05:12:45,241 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:45,242 - INFO - [cached since 39.63s ago] (1194508435, 1)
+2024-05-14 05:12:45,246 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:45,246 - INFO - [cached since 2.667s ago] (3, 4)
+2024-05-14 05:12:45,248 - INFO - COMMIT
+2024-05-14 05:12:45,260 - INFO - BEGIN (implicit)
+2024-05-14 05:12:45,260 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:45,261 - INFO - [cached since 1.992s ago] (1194508435,)
+2024-05-14 05:12:45,389 - INFO - ROLLBACK
+2024-05-14 05:12:45,390 - INFO - Update id=28634051 is handled. Duration 157 ms by bot id=7153324522
+2024-05-14 05:12:45,742 - INFO - BEGIN (implicit)
+2024-05-14 05:12:45,743 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:45,743 - INFO - [cached since 40.13s ago] (1194508435, 1)
+2024-05-14 05:12:45,746 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:45,747 - INFO - [cached since 3.168s ago] (2, 4)
+2024-05-14 05:12:45,748 - INFO - COMMIT
+2024-05-14 05:12:45,761 - INFO - BEGIN (implicit)
+2024-05-14 05:12:45,762 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:45,763 - INFO - [cached since 2.493s ago] (1194508435,)
+2024-05-14 05:12:45,882 - INFO - ROLLBACK
+2024-05-14 05:12:45,883 - INFO - Update id=28634052 is handled. Duration 141 ms by bot id=7153324522
+2024-05-14 05:12:46,046 - INFO - BEGIN (implicit)
+2024-05-14 05:12:46,047 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:46,047 - INFO - [cached since 40.43s ago] (1194508435, 1)
+2024-05-14 05:12:46,050 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:46,050 - INFO - [cached since 3.472s ago] (1, 4)
+2024-05-14 05:12:46,051 - INFO - COMMIT
+2024-05-14 05:12:46,063 - INFO - BEGIN (implicit)
+2024-05-14 05:12:46,064 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:46,064 - INFO - [cached since 2.795s ago] (1194508435,)
+2024-05-14 05:12:46,186 - INFO - ROLLBACK
+2024-05-14 05:12:46,187 - INFO - Update id=28634053 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 05:12:49,469 - INFO - BEGIN (implicit)
+2024-05-14 05:12:49,470 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:49,470 - INFO - [cached since 43.85s ago] (1194508435, 1)
+2024-05-14 05:12:49,474 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:49,474 - INFO - [cached since 6.895s ago] (2, 4)
+2024-05-14 05:12:49,475 - INFO - COMMIT
+2024-05-14 05:12:49,488 - INFO - BEGIN (implicit)
+2024-05-14 05:12:49,488 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:49,489 - INFO - [cached since 6.219s ago] (1194508435,)
+2024-05-14 05:12:49,653 - INFO - ROLLBACK
+2024-05-14 05:12:49,655 - INFO - Update id=28634054 is handled. Duration 187 ms by bot id=7153324522
+2024-05-14 05:12:50,613 - INFO - BEGIN (implicit)
+2024-05-14 05:12:50,614 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:50,615 - INFO - [cached since 45s ago] (1194508435, 1)
+2024-05-14 05:12:50,618 - INFO - UPDATE cart SET quantity=$1::INTEGER, updated_at=now() WHERE cart.id = $2::INTEGER
+2024-05-14 05:12:50,618 - INFO - [cached since 8.04s ago] (1, 4)
+2024-05-14 05:12:50,620 - INFO - COMMIT
+2024-05-14 05:12:50,633 - INFO - BEGIN (implicit)
+2024-05-14 05:12:50,633 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:50,633 - INFO - [cached since 7.365s ago] (1194508435,)
+2024-05-14 05:12:50,759 - INFO - ROLLBACK
+2024-05-14 05:12:50,761 - INFO - Update id=28634055 is handled. Duration 157 ms by bot id=7153324522
+2024-05-14 05:12:53,442 - INFO - BEGIN (implicit)
+2024-05-14 05:12:53,443 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:12:53,444 - INFO - [cached since 51.5s ago] ('order',)
+2024-05-14 05:12:53,446 - INFO - ROLLBACK
+2024-05-14 05:12:53,447 - INFO - Update id=28634056 is not handled. Duration 14 ms by bot id=7153324522
+2024-05-14 05:12:53,448 - ERROR - Cause exception while process update id=28634056 by bot id=7153324522
+AttributeError: 'NoneType' object has no attribute 'image'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 52, in user_menu
+    media, reply_markup = await get_menu_content(
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 139, in get_menu_content
+    return await main_menu(session, level, menu_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 20, in main_menu
+    image = InputMediaPhoto(media=banner.image, caption=banner.description)
+                                  ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'image'
+2024-05-14 05:12:58,867 - INFO - BEGIN (implicit)
+2024-05-14 05:12:58,868 - INFO - DELETE FROM cart WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:12:58,869 - INFO - [generated in 0.00047s] (1194508435, 1)
+2024-05-14 05:12:58,872 - INFO - COMMIT
+2024-05-14 05:12:58,899 - INFO - BEGIN (implicit)
+2024-05-14 05:12:58,900 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:12:58,900 - INFO - [cached since 15.63s ago] (1194508435,)
+2024-05-14 05:12:58,903 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:12:58,903 - INFO - [cached since 56.96s ago] ('cart',)
+2024-05-14 05:12:59,027 - INFO - ROLLBACK
+2024-05-14 05:12:59,029 - INFO - Update id=28634057 is handled. Duration 172 ms by bot id=7153324522
+2024-05-14 05:12:59,923 - INFO - BEGIN (implicit)
+2024-05-14 05:12:59,924 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:12:59,924 - INFO - [cached since 57.98s ago] ('main',)
+2024-05-14 05:13:00,045 - INFO - ROLLBACK
+2024-05-14 05:13:00,046 - INFO - Update id=28634058 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:13:01,260 - INFO - BEGIN (implicit)
+2024-05-14 05:13:01,260 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:13:01,261 - INFO - [cached since 59.31s ago] ('catalog',)
+2024-05-14 05:13:01,264 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 05:13:01,264 - INFO - [cached since 57.84s ago] ()
+2024-05-14 05:13:01,475 - INFO - ROLLBACK
+2024-05-14 05:13:01,477 - INFO - Update id=28634059 is handled. Duration 218 ms by bot id=7153324522
+2024-05-14 05:13:02,185 - INFO - BEGIN (implicit)
+2024-05-14 05:13:02,186 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 05:13:02,186 - INFO - [cached since 57.87s ago] (1,)
+2024-05-14 05:13:02,308 - INFO - ROLLBACK
+2024-05-14 05:13:02,309 - INFO - Update id=28634060 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 05:13:03,688 - INFO - BEGIN (implicit)
+2024-05-14 05:13:03,689 - INFO - SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created_at, "user".updated_at 
+FROM "user" 
+WHERE "user".user_id = $1::BIGINT
+2024-05-14 05:13:03,689 - INFO - [cached since 58.08s ago] (1194508435,)
+2024-05-14 05:13:03,692 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT AND cart.cocktail_id = $2::INTEGER
+2024-05-14 05:13:03,693 - INFO - [cached since 58.08s ago] (1194508435, 1)
+2024-05-14 05:13:03,695 - INFO - INSERT INTO cart (user_id, cocktail_id, quantity, created_at, updated_at) VALUES ($1::BIGINT, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created_at, cart.updated_at
+2024-05-14 05:13:03,695 - INFO - [cached since 58.07s ago] (1194508435, 1, 1)
+2024-05-14 05:13:03,697 - INFO - COMMIT
+2024-05-14 05:13:03,764 - INFO - Update id=28634061 is handled. Duration 78 ms by bot id=7153324522
+2024-05-14 05:13:05,498 - INFO - BEGIN (implicit)
+2024-05-14 05:13:05,498 - INFO - SELECT cart.id, cart.user_id, cart.cocktail_id, cart.quantity, cart.created_at, cart.updated_at, cocktails_1.id AS id_1, cocktails_1.name, cocktails_1.description, cocktails_1.image, cocktails_1.price, cocktails_1.author, cocktails_1.category_id, cocktails_1.created_at AS created_at_1, cocktails_1.updated_at AS updated_at_1 
+FROM cart LEFT OUTER JOIN cocktails AS cocktails_1 ON cocktails_1.id = cart.cocktail_id 
+WHERE cart.user_id = $1::BIGINT
+2024-05-14 05:13:05,499 - INFO - [cached since 22.23s ago] (1194508435,)
+2024-05-14 05:13:05,728 - INFO - ROLLBACK
+2024-05-14 05:13:05,729 - INFO - Update id=28634062 is handled. Duration 233 ms by bot id=7153324522
+2024-05-14 05:13:08,614 - INFO - BEGIN (implicit)
+2024-05-14 05:13:08,615 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 05:13:08,615 - INFO - [cached since 66.67s ago] ('order',)
+2024-05-14 05:13:08,618 - INFO - ROLLBACK
+2024-05-14 05:13:08,619 - INFO - Update id=28634063 is not handled. Duration 16 ms by bot id=7153324522
+2024-05-14 05:13:08,619 - ERROR - Cause exception while process update id=28634063 by bot id=7153324522
+AttributeError: 'NoneType' object has no attribute 'image'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 52, in user_menu
+    media, reply_markup = await get_menu_content(
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 139, in get_menu_content
+    return await main_menu(session, level, menu_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 20, in main_menu
+    image = InputMediaPhoto(media=banner.image, caption=banner.description)
+                                  ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'image'
+2024-05-14 05:14:03,745 - INFO - Polling stopped

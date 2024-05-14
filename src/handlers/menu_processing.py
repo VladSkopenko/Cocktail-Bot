@@ -1,7 +1,7 @@
 from aiogram.types import InputMediaPhoto
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.key_bords.inline import get_products_buttons
+from src.key_bords.inline import get_cocktails_buttons
 from src.key_bords.inline import get_user_cart
 from src.key_bords.inline import get_user_catalog_buttons
 from src.key_bords.inline import get_user_main_buttons
@@ -60,7 +60,7 @@ async def cocktails(session, level, category, page):
 
     pagination_buttons = pages(paginator)
 
-    buttons = get_products_buttons(
+    buttons = get_cocktails_buttons(
         level=level,
         category=category,
         page=page,
@@ -110,7 +110,8 @@ async def carts(session, level, menu_name, page, user_id, cocktail_id):
         image = InputMediaPhoto(
             media=cart.cocktail.image,
             caption=f"<strong>{cart.cocktail.name}</strong>\n{cart.cocktail.price}$ x {cart.quantity} = {cart_price}$\
-                    \nТовар {paginator.page} из {paginator.pages} в корзині.\nЗагальна вартість замовлення: {total_price}",
+                    \nТовар {paginator.page} из {paginator.pages} в корзині.\n"
+                    f"Загальна вартість замовлення: {total_price}",
         )
 
         pagination_buttons = pages(paginator)
