@@ -3746,3 +3746,765 @@ FROM banner
 2024-05-14 02:57:44,781 - INFO - Update id=28633707 is handled. Duration 78 ms by bot id=7153324522
 2024-05-14 03:07:01,616 - INFO - Polling stopped
 2024-05-14 03:07:01,881 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:07:46,880 - DEBUG - Using proactor: IocpProactor
+2024-05-14 03:07:47,043 - INFO - Start polling
+2024-05-14 03:07:47,096 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:07:49,563 - INFO - Update id=28633708 is handled. Duration 218 ms by bot id=7153324522
+2024-05-14 03:08:03,958 - INFO - select pg_catalog.version()
+2024-05-14 03:08:03,958 - INFO - [raw sql] ()
+2024-05-14 03:08:03,962 - INFO - select current_schema()
+2024-05-14 03:08:03,962 - INFO - [raw sql] ()
+2024-05-14 03:08:03,965 - INFO - show standard_conforming_strings
+2024-05-14 03:08:03,965 - INFO - [raw sql] ()
+2024-05-14 03:08:03,967 - INFO - BEGIN (implicit)
+2024-05-14 03:08:03,978 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 03:08:03,978 - INFO - [generated in 0.00061s] ('main',)
+2024-05-14 03:08:04,000 - INFO - ROLLBACK
+2024-05-14 03:08:04,002 - INFO - Update id=28633709 is not handled. Duration 140 ms by bot id=7153324522
+2024-05-14 03:08:04,002 - ERROR - Cause exception while process update id=28633709 by bot id=7153324522
+ValidationError: 2 validation errors for InputMediaPhoto
+media.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+media.is-instance[InputFile]
+  Input should be an instance of InputFile [type=is_instance_of, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 18, in start_cmd
+    media, reply_markup = await get_menu_content(session, level=0, menu_name="main")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 138, in get_menu_content
+    return await main_menu(session, level, menu_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 20, in main_menu
+    image = InputMediaPhoto(media=banner.image, caption=banner.description)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for InputMediaPhoto
+media.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+media.is-instance[InputFile]
+  Input should be an instance of InputFile [type=is_instance_of, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+2024-05-14 03:08:05,140 - INFO - BEGIN (implicit)
+2024-05-14 03:08:05,140 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+2024-05-14 03:08:05,141 - INFO - [cached since 1.162s ago] ('main',)
+2024-05-14 03:08:05,144 - INFO - ROLLBACK
+2024-05-14 03:08:05,145 - INFO - Update id=28633710 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:08:05,146 - ERROR - Cause exception while process update id=28633710 by bot id=7153324522
+ValidationError: 2 validation errors for InputMediaPhoto
+media.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+media.is-instance[InputFile]
+  Input should be an instance of InputFile [type=is_instance_of, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\user_private.py", line 18, in start_cmd
+    media, reply_markup = await get_menu_content(session, level=0, menu_name="main")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 138, in get_menu_content
+    return await main_menu(session, level, menu_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\menu_processing.py", line 20, in main_menu
+    image = InputMediaPhoto(media=banner.image, caption=banner.description)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for InputMediaPhoto
+media.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/string_type
+media.is-instance[InputFile]
+  Input should be an instance of InputFile [type=is_instance_of, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.5/v/is_instance_of
+2024-05-14 03:08:26,231 - INFO - Polling stopped
+2024-05-14 03:08:26,497 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:08:31,964 - DEBUG - Using proactor: IocpProactor
+2024-05-14 03:08:32,127 - INFO - Start polling
+2024-05-14 03:08:32,178 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:08:38,302 - INFO - Update id=28633711 is handled. Duration 250 ms by bot id=7153324522
+2024-05-14 03:08:46,901 - INFO - Update id=28633712 is handled. Duration 93 ms by bot id=7153324522
+2024-05-14 03:08:51,210 - INFO - select pg_catalog.version()
+2024-05-14 03:08:51,210 - INFO - [raw sql] ()
+2024-05-14 03:08:51,213 - INFO - select current_schema()
+2024-05-14 03:08:51,213 - INFO - [raw sql] ()
+2024-05-14 03:08:51,216 - INFO - show standard_conforming_strings
+2024-05-14 03:08:51,217 - INFO - [raw sql] ()
+2024-05-14 03:08:51,219 - INFO - BEGIN (implicit)
+2024-05-14 03:08:51,229 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner
+2024-05-14 03:08:51,229 - INFO - [generated in 0.00048s] ()
+2024-05-14 03:08:51,316 - INFO - ROLLBACK
+2024-05-14 03:08:51,318 - INFO - Update id=28633713 is handled. Duration 188 ms by bot id=7153324522
+2024-05-14 03:18:04,434 - INFO - Update id=28633714 is handled. Duration 250 ms by bot id=7153324522
+2024-05-14 03:18:18,164 - INFO - BEGIN (implicit)
+2024-05-14 03:18:18,167 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner
+2024-05-14 03:18:18,167 - INFO - [cached since 566.9s ago] ()
+2024-05-14 03:18:18,172 - INFO - UPDATE banner SET image=$1::VARCHAR, updated_at=now() WHERE banner.name = $2::VARCHAR
+2024-05-14 03:18:18,173 - INFO - [generated in 0.00053s] ('AgACAgIAAxkBAAIKGGZCrclWDBQmhM5Pn3Vh7vZbSrU5AAIm1jEbuakZSsrNu1BibikjAQADAgADeQADNQQ', 'about')
+2024-05-14 03:18:18,185 - INFO - COMMIT
+2024-05-14 03:18:18,258 - INFO - Update id=28633715 is handled. Duration 93 ms by bot id=7153324522
+2024-05-14 03:18:26,789 - INFO - BEGIN (implicit)
+2024-05-14 03:18:26,790 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 03:18:26,791 - INFO - [generated in 0.00053s] ()
+2024-05-14 03:18:26,860 - INFO - ROLLBACK
+2024-05-14 03:18:26,862 - INFO - Update id=28633716 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 03:18:28,667 - INFO - BEGIN (implicit)
+2024-05-14 03:18:28,669 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:28,669 - INFO - [generated in 0.00060s] (1,)
+2024-05-14 03:18:28,674 - INFO - ROLLBACK
+2024-05-14 03:18:28,675 - INFO - Update id=28633717 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:28,675 - ERROR - Cause exception while process update id=28633717 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:29,245 - INFO - BEGIN (implicit)
+2024-05-14 03:18:29,245 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:29,246 - INFO - [cached since 0.577s ago] (3,)
+2024-05-14 03:18:29,249 - INFO - ROLLBACK
+2024-05-14 03:18:29,250 - INFO - Update id=28633718 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:29,250 - ERROR - Cause exception while process update id=28633718 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:29,592 - INFO - BEGIN (implicit)
+2024-05-14 03:18:29,593 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:29,593 - INFO - [cached since 0.9243s ago] (5,)
+2024-05-14 03:18:29,596 - INFO - ROLLBACK
+2024-05-14 03:18:29,598 - INFO - Update id=28633719 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:29,598 - ERROR - Cause exception while process update id=28633719 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:29,872 - INFO - BEGIN (implicit)
+2024-05-14 03:18:29,872 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:29,873 - INFO - [cached since 1.204s ago] (7,)
+2024-05-14 03:18:29,875 - INFO - ROLLBACK
+2024-05-14 03:18:29,876 - INFO - Update id=28633720 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:29,877 - ERROR - Cause exception while process update id=28633720 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:30,185 - INFO - BEGIN (implicit)
+2024-05-14 03:18:30,185 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:30,186 - INFO - [cached since 1.517s ago] (6,)
+2024-05-14 03:18:30,188 - INFO - ROLLBACK
+2024-05-14 03:18:30,189 - INFO - Update id=28633721 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:30,189 - ERROR - Cause exception while process update id=28633721 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:32,160 - INFO - BEGIN (implicit)
+2024-05-14 03:18:32,160 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 03:18:32,161 - INFO - [cached since 5.371s ago] ()
+2024-05-14 03:18:32,229 - INFO - ROLLBACK
+2024-05-14 03:18:32,231 - INFO - Update id=28633722 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 03:18:34,457 - INFO - BEGIN (implicit)
+2024-05-14 03:18:34,458 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:34,459 - INFO - [cached since 5.79s ago] (4,)
+2024-05-14 03:18:34,461 - INFO - ROLLBACK
+2024-05-14 03:18:34,462 - INFO - Update id=28633723 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:34,462 - ERROR - Cause exception while process update id=28633723 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:18:34,752 - INFO - BEGIN (implicit)
+2024-05-14 03:18:34,753 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner
+2024-05-14 03:18:34,753 - INFO - [cached since 583.5s ago] ()
+2024-05-14 03:18:34,819 - INFO - ROLLBACK
+2024-05-14 03:18:34,821 - INFO - Update id=28633724 is handled. Duration 63 ms by bot id=7153324522
+2024-05-14 03:18:34,938 - INFO - BEGIN (implicit)
+2024-05-14 03:18:34,939 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:18:34,939 - INFO - [cached since 6.27s ago] (2,)
+2024-05-14 03:18:34,941 - INFO - ROLLBACK
+2024-05-14 03:18:34,942 - INFO - Update id=28633725 is not handled. Duration 0 ms by bot id=7153324522
+2024-05-14 03:18:34,943 - ERROR - Cause exception while process update id=28633725 by bot id=7153324522
+TypeError: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\middlewares\db.py", line 23, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\TelegramBot\src\handlers\admin_private.py", line 52, in starring_at_product
+    for cocktail in await repository_get_cocktail(session, category_id):
+TypeError: 'NoneType' object is not iterable
+2024-05-14 03:20:06,217 - INFO - Polling stopped
+2024-05-14 03:20:06,469 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:20:13,524 - DEBUG - Using proactor: IocpProactor
+2024-05-14 03:20:13,679 - INFO - Start polling
+2024-05-14 03:20:13,731 - INFO - Run polling for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'
+2024-05-14 03:20:19,495 - INFO - Update id=28633726 is handled. Duration 234 ms by bot id=7153324522
+2024-05-14 03:20:26,840 - INFO - Update id=28633727 is handled. Duration 94 ms by bot id=7153324522
+2024-05-14 03:20:28,566 - INFO - select pg_catalog.version()
+2024-05-14 03:20:28,566 - INFO - [raw sql] ()
+2024-05-14 03:20:28,569 - INFO - select current_schema()
+2024-05-14 03:20:28,569 - INFO - [raw sql] ()
+2024-05-14 03:20:28,572 - INFO - show standard_conforming_strings
+2024-05-14 03:20:28,572 - INFO - [raw sql] ()
+2024-05-14 03:20:28,574 - INFO - BEGIN (implicit)
+2024-05-14 03:20:28,584 - INFO - SELECT category.id, category.name, category.created_at, category.updated_at 
+FROM category
+2024-05-14 03:20:28,584 - INFO - [generated in 0.00069s] ()
+2024-05-14 03:20:28,694 - INFO - ROLLBACK
+2024-05-14 03:20:28,696 - INFO - Update id=28633728 is handled. Duration 218 ms by bot id=7153324522
+2024-05-14 03:20:29,673 - INFO - BEGIN (implicit)
+2024-05-14 03:20:29,675 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:29,676 - INFO - [generated in 0.00064s] (1,)
+2024-05-14 03:20:29,813 - INFO - ROLLBACK
+2024-05-14 03:20:29,815 - INFO - Update id=28633729 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 03:20:31,628 - INFO - BEGIN (implicit)
+2024-05-14 03:20:31,628 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:31,629 - INFO - [cached since 1.953s ago] (1,)
+2024-05-14 03:20:31,898 - INFO - ROLLBACK
+2024-05-14 03:20:31,899 - INFO - Update id=28633730 is handled. Duration 265 ms by bot id=7153324522
+2024-05-14 03:20:32,646 - INFO - BEGIN (implicit)
+2024-05-14 03:20:32,647 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:32,647 - INFO - [cached since 2.972s ago] (1,)
+2024-05-14 03:20:32,774 - INFO - ROLLBACK
+2024-05-14 03:20:32,776 - INFO - Update id=28633731 is handled. Duration 140 ms by bot id=7153324522
+2024-05-14 03:20:33,080 - INFO - BEGIN (implicit)
+2024-05-14 03:20:33,081 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:33,081 - INFO - [cached since 3.406s ago] (5,)
+2024-05-14 03:20:33,427 - INFO - ROLLBACK
+2024-05-14 03:20:33,428 - INFO - Update id=28633732 is handled. Duration 344 ms by bot id=7153324522
+2024-05-14 03:20:36,464 - INFO - BEGIN (implicit)
+2024-05-14 03:20:36,465 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:36,465 - INFO - [cached since 6.79s ago] (6,)
+2024-05-14 03:20:36,602 - INFO - ROLLBACK
+2024-05-14 03:20:36,604 - INFO - Update id=28633733 is handled. Duration 156 ms by bot id=7153324522
+2024-05-14 03:20:38,900 - INFO - BEGIN (implicit)
+2024-05-14 03:20:38,900 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:38,901 - INFO - [cached since 9.226s ago] (2,)
+2024-05-14 03:20:39,022 - INFO - ROLLBACK
+2024-05-14 03:20:39,024 - INFO - Update id=28633734 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 03:20:40,761 - INFO - BEGIN (implicit)
+2024-05-14 03:20:40,762 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:40,763 - INFO - [cached since 11.09s ago] (4,)
+2024-05-14 03:20:40,892 - INFO - ROLLBACK
+2024-05-14 03:20:40,894 - INFO - Update id=28633735 is handled. Duration 125 ms by bot id=7153324522
+2024-05-14 03:20:41,550 - INFO - BEGIN (implicit)
+2024-05-14 03:20:41,550 - INFO - SELECT cocktails.id, cocktails.name, cocktails.description, cocktails.image, cocktails.price, cocktails.author, cocktails.category_id, cocktails.created_at, cocktails.updated_at 
+FROM cocktails 
+WHERE cocktails.category_id = $1::INTEGER
+2024-05-14 03:20:41,551 - INFO - [cached since 11.88s ago] (7,)
+2024-05-14 03:20:41,763 - INFO - ROLLBACK
+2024-05-14 03:20:41,765 - INFO - Update id=28633736 is handled. Duration 218 ms by bot id=7153324522
+2024-05-14 03:20:45,337 - INFO - BEGIN (implicit)
+2024-05-14 03:20:45,340 - INFO - DELETE FROM cocktails WHERE cocktails.id = $1::INTEGER
+2024-05-14 03:20:45,340 - INFO - [generated in 0.00048s] (11,)
+2024-05-14 03:20:45,355 - INFO - COMMIT
+2024-05-14 03:20:45,498 - INFO - Update id=28633737 is handled. Duration 172 ms by bot id=7153324522
+2024-05-14 03:20:49,403 - INFO - BEGIN (implicit)
+2024-05-14 03:20:49,404 - INFO - SELECT banner.id, banner.name, banner.image, banner.description, banner.created_at, banner.updated_at 
+FROM banner
+2024-05-14 03:20:49,405 - INFO - [generated in 0.00055s] ()
+2024-05-14 03:20:49,477 - INFO - ROLLBACK
+2024-05-14 03:20:49,479 - INFO - Update id=28633738 is handled. Duration 77 ms by bot id=7153324522
+2024-05-14 03:20:55,983 - INFO - Polling stopped
+2024-05-14 03:20:56,247 - INFO - Polling stopped for bot @skopen_remind_bot id=7153324522 - 'SkopenBot'

@@ -20,6 +20,7 @@ from src.repository.repo_banner import repository_get_info_pages
 from src.repository.repo_category import repository_get_categories
 from src.repository.repo_cockt import repository_add_cocktail
 from src.repository.repo_cockt import repository_delete_cocktail_by_id
+from src.repository.repo_cockt import repository_get_all_cocktails
 from src.repository.repo_cockt import repository_get_cocktail
 from src.repository.repo_cockt import repository_update_cocktail
 
@@ -49,7 +50,7 @@ async def admin_features(message: types.Message, session: AsyncSession):
 async def starring_at_product(callback: types.CallbackQuery, session: AsyncSession):
     category_id = callback.data.split("_")[-1]
     category_id = int(category_id)
-    for cocktail in await repository_get_cocktail(session, category_id):
+    for cocktail in await repository_get_all_cocktails(session, category_id):
         await callback.message.answer_photo(
             cocktail.image,
             caption=f"<strong>{cocktail.name}\
