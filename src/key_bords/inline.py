@@ -14,7 +14,7 @@ class MenuCallBack(CallbackData, prefix="menu"):
 def get_user_main_buttons(*, level: int, sizes: tuple[int] = (2,)):
     keyboard = InlineKeyboardBuilder()
     buttons = {
-        "Коктейлі 🍕": "catalog",
+        "Коктейлі 🍸": "catalog",
         "Корзина 🛒": "cart",
         "Про бота ℹ️": "about",
         "Оплата 💰": "payment",
