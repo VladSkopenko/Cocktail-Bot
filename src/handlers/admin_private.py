@@ -39,7 +39,7 @@ async def admin_features(message: types.Message, session: AsyncSession):
     categories = await repository_get_categories(session)
     buttons = {category.name: f"category_{category.id}" for category in categories}
     await message.answer(
-        "Оберіть категорію", reply_markup=get_callback_buttons(btns=buttons)
+        "Оберіть категорію", reply_markup=get_callback_buttons(buttons=buttons)
     )
 
 
@@ -56,7 +56,7 @@ async def starring_at_product(callback: types.CallbackQuery, session: AsyncSessi
             caption=f"<strong>{cocktail.name}\
                     </strong>\n{cocktail.description}\nСтоимость: {round(cocktail.price, 2)}",
             reply_markup=get_callback_buttons(
-                btns={
+                buttons={
                     "Видалити": f"delete_{cocktail.id}",
                     "Змінити": f"change_{cocktail.id}",
                 },
@@ -257,7 +257,7 @@ async def add_description(
     buttons = {category.name: str(category.id) for category in categories}
     await message.answer(
         "Оберіть категорію, щоб додати продук",
-        reply_markup=get_callback_buttons(btns=buttons),
+        reply_markup=get_callback_buttons(buttons=buttons),
     )
     await state.set_state(AddCocktail.category)
 

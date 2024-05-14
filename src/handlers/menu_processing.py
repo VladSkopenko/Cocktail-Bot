@@ -37,10 +37,10 @@ async def catalog(session, level, menu_name):
 def pages(paginator: Paginator):
     buttons = dict()
     if paginator.has_previous():
-        buttons["◀ Пред."] = "previous"
+        buttons["◀ Поп."] = "previous"
 
     if paginator.has_next():
-        buttons["След. ▶"] = "next"
+        buttons["Нас. ▶"] = "next"
 
     return buttons
 
